@@ -120,10 +120,12 @@ newMessage.fadingTime=100
 ->
 newMessage.fadingTime=100*FPS_SCA
 
-In 8.2 a convenient way to do this is to do a search for .fadingTime to highlight every instance then just scroll down applying it. I do this for atkTime too. 
+In 8.2 a convenient way to do this is to do a search for .fadingTime to highlight every instance then just scroll down applying it. I do this for atkTime too in other files too. 
 
 9) "0.5 pixels a frame"
 
 Something falling slowly is represented by oPlayer1.y+=1, for example. But I found that changing this to oPlayer1.y+=0.5 results in quite a noticeable stutter. It may be that the subpixels get all janky when trying to move half of a y position. What I found to work instead is to move 1 pixel every other frame like so.
 
-	if sceneDelay mod 1 = 0 {oPlayer1.y+=1} 
+	if sceneDelay mod 1 == 0 {oPlayer1.y+=1} 
+	(or)
+	if current_frame mod 1 == 0 {oPlayer1.y+=1}
