@@ -1,5 +1,9 @@
 Simple Instructions for DT Code.........
 
+0) FPS_SCA
+
+The global variable FPS_SCA is declared in startup and is defined as 2. Things we want to halve to slow down should be divided by FPS_SCA, things we want to delay (like fading in 100 frames -> fading in 200 frames) should be multiplied by FPS_SCA. 
+
 
 1) COMMON HALVING/QUARTERING PATTERNS
 
@@ -129,3 +133,34 @@ Something falling slowly is represented by oPlayer1.y+=1, for example. But I fou
 	if sceneDelay mod 1 == 0 {oPlayer1.y+=1} 
 	(or)
 	if current_frame mod 1 == 0 {oPlayer1.y+=1}
+	
+10) Events
+
+This may or may not be extremely obvious to everyone else, but map events like say moving platforms spawning infinitely from offscreen, or bowser throwing fire during a platforming section, or enemy rooms... etc are all in GameEvent objects. So, for example, if I notice that during a platforming stage some fireballs are coming at me way too fast, then look at the room and see no fireball objects everywhere... I should
+
+1) Check what chapter I'm in. In this case Chapter 2
+2) Go to GameEvents in the Objects subfolder directory
+3) Go to Chapter_2
+4) Look for a likely file, e.g. oEvCh1SideA, and check the Step event
+5) look for the event there. 
+
+(or do a script search for the room you're in, like search for rMario1_4)
+
+It can look like this:
+
+ else if room=rMario1_4 //Bowser fire
+  {
+    if global.gameProgress=220
+    {
+      if oPlayer1.x>=1408 and bowserFireProg=0
+      {
+        playSound(global.snd_Fireball,0,0.99,1)
+        var tNewAttack;
+        for(i=0;i<4;i+=1)
+        {
+          tNewAttack=instance_create(view_xview[0]+view_wview[0]+8,200+(i*16),oPassBullet)
+          tNewAttack.sprite_index=sBowserFire1; tNewAttack.atkPower=4
+          tNewAttack.bulletSpeed=3/FPS_SCA; tNewAttack.direction=180; tNewAttack.decayTime=-100
+        }
+        bowserFireProg+=1
+      }
