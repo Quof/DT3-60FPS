@@ -1,0 +1,109 @@
+Simple Instructions for DT Code.........
+
+
+1) COMMON HALVING/QUARTERING PATTERNS
+
+When clicking an object, open the Creation first then Step code.
+
+In Creation Code, look for:
+
+animSpd
+runAcc
+grav
+
+In response:
+
+half animSpd
+half runAcc
+quarter Grav
+
+In Step Code, look for:
+
+animSpd
+xTime+=1
+xVel=
+yVel=
+.grav= 
+
+In response:
+
+half animSpd
+half the 1 of xTime+=
+half the *assignment* of xVel/yVel (but avoid halving in cases it would reapply over and over until velocity is 0)
+quarter the *assignment* of .grav for a new instance (try not to touch grav being applied each frame though, it seems to end poorly...?)
+
+
+2) COLLISION
+
+For enemies that bump into a wall and turn around, I've made two new scripts: isCollisionLeftEdit and isCollisionRightEdit. These will prevent them from constantly turning around in a wall. 
+
+3) SUBPIXEL MOVEMENT
+
+The base moveTo function is totally fucked and rounds/fractions enemy movement. This will slow them down like up to 20% used natively. For now, I'm letting this happen with the hope/expectation that the moveTo function can be replaced with something (like moveToEdit) that does not have this problem. I have some code from Claude that *does* seemingly fix this with high accuracy, but I only used a few times before deciding to put it in the backburner as a high-complexity issue. The Claude code is as follows: 
+
+---Create Event
+
+xRemainder=0
+yRemainder=0
+
+---Step event with moveTo
+
+replace the line moveTo(xVel,yVel) with:
+
+xRemainder+=xVel
+xMove=round(xRemainder)
+xRemainder-=xMove
+
+yRemainder+=yVel
+yMove=round(yRemainder)
+yRemainder-=yMove
+
+moveTo(xMove,yMove)
+
+4) EFFECTS
+
+It seems like most visual effects will have code that looks like this:
+
+  var tEffect;
+      tEffect=instance_create(x+12,bbox_bottom+2,oEffect)
+      tEffect.sprite_index=sEfThwompHit; tEffect.image_speed=0.5
+      tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=1; tEffect.ySpd=0 
+      tEffect=instance_create(x-12,bbox_bottom+2,oEffect)
+      tEffect.sprite_index=sEfThwompHit; tEffect.image_xscale=-1; tEffect.image_speed=0.5
+      tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=-1; tEffect.ySpd=0
+	  
+What you want to change is:
+1) half the image_speeds
+2) half the xSpds/ySpds (if they're above 0)
+
+Do not touch tEffect.decay=-100. Although it may be that it should be =-200 in current code for now that may be something that is handled elsewhere. (Or maybe I'm wrong).
+
+
+5) BOSS AI
+
+This is preliminary, but each boss should have a core timer that determines its speed like "atkTime+=1". We want to halve this. 
+
+Then elsewhere atkTime will have single-instance modifiers like "atkTime+=atkDelay" or "atkTime+=BossProgress." Those are UNTOUCHED, not halved. The halving of +=1 handles everything.
+
+
+6) oGame.time mods
+Often, to make something happen flip xth frame, there will be code like
+
+>if oGame.time mod 6=0
+
+Historically, it seems like this wants to be changed to
+
+>if current_frame mod 6*FPS_SCA=0
+
+current_frame is 8.2 exclusive though, I think, so this won't work on 8.1. But maybe oGame.time will work on 8.1
+
+
+7) Velocity Checks
+
+Most of the time, when a number is being checked, we don't want to alter the check. For example, if atkTime is being incremented by 1 a frame and it's being checked for when it hits 10, we want to make it increment 0.5 times a frame and avoid touching the 10. But for some reason, in the following code...
+
+  y+=yVel
+  if yVel<3
+  yVel+=grav
+ 
+We actually DO want to half the "yVel" check. It's checking if it's less than 3; we want it to check if it's less than 3/2. Basically, something stuck at 1.5 velocity in 60fps is seemingly going as fast as something going 3 velocity in 30fps. So despite being a check, we do want to half the velocity being checked for. I think. This is just what has worked so far.
