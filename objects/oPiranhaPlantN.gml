@@ -8,7 +8,7 @@ event_inherited()
 makeActive()
 bCanTakeDamage=0
 bCanDealDamage=0
-image_speed=0.15/FPS_SCA
+image_speed=0.15
 y+=32
 hidingY=y
 

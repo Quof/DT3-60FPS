@@ -6,7 +6,7 @@ applies_to=self
 */
 event_inherited()
 bActive=true
-image_speed=0.3/FPS_SCA
+image_speed=0.3
 
 //Enemy base statistics
 eName="Seeker Virus - Basic"

@@ -17,6 +17,12 @@ applies_to=self
 if global.gamePaused=false
   gameStepEvent()
 
+with (all)
+{
+    image_index -= image_speed
+    image_index += image_speed/FPS_SCA //what the Fuck? halves enemy animation speed. QWH
+}
+
 //game window check
 windowUpdate+=1
 if windowUpdate mod 30=0

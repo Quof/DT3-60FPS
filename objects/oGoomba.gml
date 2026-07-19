@@ -7,7 +7,7 @@ applies_to=self
 event_inherited()
 makeActive()
 setCollisionBounds(-7,-14,7,-1)
-image_speed=0.3/FPS_SCA
+image_speed=0.3
 
 //Enemy base statistics
 eName="Goomba"

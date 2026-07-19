@@ -72,11 +72,11 @@ if global.gamePaused=false
           newMessage.enemyMessage="Have a spike salad!"
         }
         image_index=0
-        animSpd=0.33/FPS_SCA
+        animSpd=0.33
       }
       else if throwTime>=throwDelay+1 and throwTime<=throwDelay+500 //Check anim frame
       {
-        animSpd=0.33/FPS_SCA
+        animSpd=0.33
         if image_index>=7 and image_index<=7.99 and bThrown=0 //On throw frame
         {
           if instance_number(oSpinyBeetle)<50

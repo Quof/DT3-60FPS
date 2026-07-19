@@ -11,19 +11,16 @@ When clicking an object, open the Creation first then Step code.
 
 In Creation Code, look for:
 
-animSpd
 runAcc
 grav
 
 In response:
 
-halve animSpd
 halve runAcc
 quarter Grav
 
 In Step Code, look for:
 
-animSpd
 xTime+=1
 xVel=
 yVel=
@@ -33,10 +30,11 @@ yVel=
 
 In response:
 
-halve animSpd
 halve the 1 of xTime+=
 halve xVel/yVel if it's not available in the base class (but avoid halving in cases it would reapply over and over until velocity is 0)
 quarter the *assignment* of .grav for a new instance (try not to touch grav being applied each frame though, it seems to end poorly...?)
+
+Do not touch animSpd for now
 
 
 2) COLLISION

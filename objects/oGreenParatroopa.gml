@@ -7,7 +7,7 @@ applies_to=self
 event_inherited()
 makeActive()
 setCollisionBounds(-7,-22,7,-1)
-image_speed=0.2/FPS_SCA
+image_speed=0.2
 
 //Enemy base statistics
 eName="Green Paratroopa"
