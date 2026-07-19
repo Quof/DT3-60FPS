@@ -17,8 +17,8 @@ grav
 
 In response:
 
-half animSpd
-half runAcc
+halve animSpd
+halve runAcc
 quarter Grav
 
 In Step Code, look for:
@@ -33,11 +33,9 @@ yVel=
 
 In response:
 
-half animSpd
-half the 1 of xTime+=
-half the *assignment* of xVel/yVel (but avoid halving in cases it would reapply over and over until velocity is 0)
-half moveSpd
-half bulletSpd
+halve animSpd
+halve the 1 of xTime+=
+halve xVel/yVel if it's not available in the base class (but avoid halving in cases it would reapply over and over until velocity is 0)
 quarter the *assignment* of .grav for a new instance (try not to touch grav being applied each frame though, it seems to end poorly...?)
 
 
@@ -81,8 +79,8 @@ It seems like most visual effects will have code that looks like this:
       tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=-1; tEffect.ySpd=0
 	  
 What you want to change is:
-1) half the image_speeds
-2) half the xSpds/ySpds (if they're above 0)
+1) halve the image_speeds
+2) halve the xSpds/ySpds (if they're above 0)
 
 Do not touch tEffect.decay=-100. Although it may be that it should be =-200 in current code for now that may be something that is handled elsewhere. (Or maybe I'm wrong).
 
@@ -114,19 +112,9 @@ Most of the time, when a number is being checked, we don't want to alter the che
   if yVel<3
   yVel+=grav
  
-We actually DO want to half the "yVel" check. It's checking if it's less than 3; we want it to check if it's less than 3/2. Basically, something stuck at 1.5 velocity in 60fps is seemingly going as fast as something going 3 velocity in 30fps. So despite being a check, we do want to half the velocity being checked for. I think. This is just what has worked so far.
+We actually DO want to halve the "yVel" check. It's checking if it's less than 3; we want it to check if it's less than 3/2. Basically, something stuck at 1.5 velocity in 60fps is seemingly going as fast as something going 3 velocity in 30fps. So despite being a check, we do want to halve the velocity being checked for. I think. This is just what has worked so far.
 
-8) Dialogue
-
-Main cutscenes progress follows sceneDelay+=1 much like atkTime. Not much to report here. Every single speech box in the game has to have its fading time multplied by two however.
-
-newMessage.fadingTime=100 
-->
-newMessage.fadingTime=100*FPS_SCA
-
-In 8.2 a convenient way to do this is to do a search for .fadingTime to highlight every instance then just scroll down applying it. I do this for atkTime too in other files too. 
-
-9) "0.5 pixels a frame"
+8) "0.5 pixels a frame"
 
 Something falling slowly is represented by oPlayer1.y+=1, for example. But I found that changing this to oPlayer1.y+=0.5 results in quite a noticeable stutter. It may be that the subpixels get all janky when trying to move half of a y position. What I found to work instead is to move 1 pixel every other frame like so.
 
@@ -134,7 +122,7 @@ Something falling slowly is represented by oPlayer1.y+=1, for example. But I fou
 	(or)
 	if current_frame mod 1 == 0 {oPlayer1.y+=1}
 	
-10) Events
+9) Events
 
 This may or may not be extremely obvious to everyone else, but map events like say moving platforms spawning infinitely from offscreen, or bowser throwing fire during a platforming section, or enemy rooms... etc are all in GameEvent objects. So, for example, if I notice that during a platforming stage some fireballs are coming at me way too fast, then look at the room and see no fireball objects everywhere... I should
 

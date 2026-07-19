@@ -43,7 +43,7 @@ if global.gameProgress=0 and room=rMain_1 //----- [1] Jerry dropping down -----
       tEffect=instance_create(oPlayer1.x,oPlayer1.y-26,oEffect)
       tEffect.sprite_index=sHeal; tEffect.image_speed=0.5/FPS_SCA
       tEffect.image_xscale=3; tEffect.image_yscale=3
-      tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100/FPS_SCA; tEffect.xSpd=0; tEffect.ySpd=0
+      tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=0; tEffect.ySpd=0
     }
     if sceneDelay=50
     {
@@ -51,7 +51,7 @@ if global.gameProgress=0 and room=rMain_1 //----- [1] Jerry dropping down -----
       var tEffect;
       tEffect=instance_create(oPlayer1.x,oPlayer1.y-26,oEffect)
       tEffect.sprite_index=sShipExplosion; tEffect.image_speed=0.5/FPS_SCA
-      tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100/FPS_SCA; tEffect.xSpd=0; tEffect.ySpd=0
+      tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=0; tEffect.ySpd=0
     }
     else if sceneDelay=60
     {
@@ -75,77 +75,77 @@ if global.gameProgress=0 and room=rMain_1 //----- [1] Jerry dropping down -----
     if sceneDelay=5
     {
       msgCreate(0,0,"Jerry","Okay we've got a problem Jeremy. I can't move!",0,1,oMessagePerson,0)
-      newMessage.fadingTime=105*FPS_SCA
+      newMessage.fadingTime=105
     }
     else if sceneDelay=120
     {
       msgCreate(0,0,"Jeremy","Hold on a sec, the Virus messed things up.",0,1,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=230
     {
       msgCreate(0,0,"Jerry","This is going to be a recurring pattern isn't it?",0,1,oMessagePerson,0)
-      newMessage.fadingTime=105*FPS_SCA
+      newMessage.fadingTime=105
     }
     else if sceneDelay=345
     {
       msgCreate(0,0,"Claire","HEY! Why am I stuck here spectating?",0,2,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=455
     {
       msgCreate(0,0,"Jeremy","Seriously you two, I'm trying to figure it out. Hold on.",0,1,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=565
     {
       msgCreate(0,0,"Claire","What do you mean hold on!? I'm stuck watching! This is SO unfair!",0,2,oMessagePerson,0)
-      newMessage.fadingTime=110*FPS_SCA
+      newMessage.fadingTime=110
     }
     else if sceneDelay=685
     {
       msgCreate(0,0,"Jerry","You wouldn't be upset if it were me stuck wherever you are.",0,1,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=795
     {
       msgCreate(0,0,"Claire","Well yeah, Jerry. This is just going to be boring for me.",0,2,oMessagePerson,0)
-      newMessage.fadingTime=110*FPS_SCA
+      newMessage.fadingTime=110
     }
     else if sceneDelay=915
     {
       msgCreate(0,0,"Jerry","I'm fine with doing everything...#As long as this doesn't lead to spikes.",0,1,oMessagePerson,0)
-      newMessage.fadingTime=110*FPS_SCA
+      newMessage.fadingTime=110
     }
     else if sceneDelay=1035
     {
       msgCreate(0,0,"Claire","That would make this infinitely less boring.",0,2,oMessagePerson,0)
-      newMessage.fadingTime=95*FPS_SCA
+      newMessage.fadingTime=95
     }
     else if sceneDelay=1140
     {
       msgCreate(0,0,"Jerry","Hey, anyone else think it's funny that Claire's text boxes are bigger?",0,1,oMessagePerson,0)
-      newMessage.fadingTime=110*FPS_SCA
+      newMessage.fadingTime=110
     }
     else if sceneDelay=1260
     {
       msgCreate(0,0,"Claire","Whatever Jerry. You know that's just a bug.",0,2,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=1370
     {
       msgCreate(0,0,"Jerry","Damn, well... that didn't work on you.",0,1,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=1480
     {
       msgCreate(0,0,"Jeremy","Ah, I think I figured this out.",0,1,oMessagePerson,0)
-      newMessage.fadingTime=100*FPS_SCA
+      newMessage.fadingTime=100
     }
     else if sceneDelay=1590
     {
       msgCreate(0,0,"Jerry","Yay, the ground!",0,1,oMessagePerson,0)
-      newMessage.fadingTime=90*FPS_SCA
+      newMessage.fadingTime=90
     }
     if oPlayer1.y>=2048
     {
@@ -200,14 +200,14 @@ else if global.gameProgress=1 and room=rMain_1 //----- [] Virus attacks -----
       else if sceneDelay=120
       {
         virusAtk=instance_create(room_width+8,2032,oSeekerVirusBasic)
-        virusAtk.type=0; virusAtk.moveSpd=1; virusAtk.direction=180
+        virusAtk.type=0; virusAtk.moveSpd=1/FPS_SCA; virusAtk.direction=180
       }
       else if sceneDelay>=150 and sceneDelay<=999
       {
         if virusAtk.x<=192
         {
           msgCreate(0,0,"Jerry","WHAT?! THAT WAS UNFAIR!! I couldn't even duck that!",0,1,oMessagePerson,0)
-          newMessage.fadingTime=120*FPS_SCA
+          newMessage.fadingTime=120
           sceneDelay=1000
         }
       }
@@ -221,27 +221,27 @@ else if global.gameProgress=1 and room=rMain_1 //----- [] Virus attacks -----
         if sceneDelay=100
         {
           msgCreate(0,0,"Claire","Now that's funny. There goes any chance at a perfect run.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=125*FPS_SCA
+          newMessage.fadingTime=125
         }
         else if sceneDelay=230
         {
           msgCreate(0,0,"Jerry","That is so not funny, it's annoying really!",0,1,oMessagePerson,0)
-          newMessage.fadingTime=120*FPS_SCA
+          newMessage.fadingTime=120
         }
         else if sceneDelay=355
         {
           msgCreate(0,0,"Jeremy","Eh, no worries, I hacked that so it won't record the hit.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=125*FPS_SCA
+          newMessage.fadingTime=125
         }
         else if sceneDelay=485
         {
           msgCreate(0,0,"Chao","Looks like there are more of them coming.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=95*FPS_SCA
+          newMessage.fadingTime=95
         }
         else if sceneDelay=585
         {
           msgCreate(0,0,"Jeremy","I won't be able to get your movement back on in time, but hold on, I've got an idea.",0,2,oMessagePerson,0)
-          newMessage.fadingTime=155*FPS_SCA
+          newMessage.fadingTime=155
         }
         else if sceneDelay=745 {sceneDelay=0; sceneProgress+=1}
       }
@@ -250,47 +250,47 @@ else if global.gameProgress=1 and room=rMain_1 //----- [] Virus attacks -----
         if sceneDelay=100
         {
           msgCreate(0,0,"Claire","Ah wait, what... I thought you were supposed to die in one hit...",0,1,oMessagePerson,0)
-          newMessage.fadingTime=130*FPS_SCA
+          newMessage.fadingTime=130
         }
         else if sceneDelay=230
         {
           msgCreate(0,0,"Jeremy","Oh you wanted that mode on? I'll fix that.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=120*FPS_SCA
+          newMessage.fadingTime=120
         }
         else if sceneDelay=350
         {
           msgCreate(0,0,"Jerry","Hold up, I never said I wanted that!",0,1,oMessagePerson,0)
-          newMessage.fadingTime=110*FPS_SCA
+          newMessage.fadingTime=110
         }
         else if sceneDelay=460
         {
           msgCreate(0,0,"Jeremy","Oooh damn, too late.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=70*FPS_SCA
+          newMessage.fadingTime=70
         }
         else if sceneDelay=530
         {
           msgCreate(0,0,"Claire","I was joking, Jeremy.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=70*FPS_SCA
+          newMessage.fadingTime=70
         }
         else if sceneDelay=600
         {
           msgCreate(0,0,"Jeremy","Son of a... there's no way to turn it off now.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=120*FPS_SCA
+          newMessage.fadingTime=120
         }
         else if sceneDelay=720
         {
           msgCreate(0,0,"Jerry","Thaaanks Claire.",0,1,oMessagePerson,0)
-          newMessage.fadingTime=60*FPS_SCA
+          newMessage.fadingTime=60
         }
         else if sceneDelay=780
         {
           msgCreate(0,0,"Claire","You know, screw it! Perfect run this! LET'S GO!!",0,1,oMessagePerson,0)
-          newMessage.fadingTime=120*FPS_SCA
+          newMessage.fadingTime=120
         }
         else if sceneDelay=900
         {
           msgCreate(0,0,"Jerry","Well... SURE!! YEAH!!",0,1,oMessagePerson,0)
-          newMessage.fadingTime=70*FPS_SCA
+          newMessage.fadingTime=70
         }
         else if sceneDelay=970 {sceneDelay=0; sceneProgress+=1}
       }
@@ -315,24 +315,24 @@ else if global.gameProgress=1 and room=rMain_1 //----- [] Virus attacks -----
         }
 
         msgCreate(170,190,"Jeremy","BAM!!",0,0,oMessagePerson,0)
-        newMessage.fadingTime=60*FPS_SCA
+        newMessage.fadingTime=60
       }
       else if sceneDelay=60
       {
         msgCreate(0,0,"Jerry","What is this crazy contraption?",0,1,oMessagePerson,0)
-        newMessage.fadingTime=90*FPS_SCA
+        newMessage.fadingTime=90
       }
       else if sceneDelay=150
       {
         msgCreate(0,0,"Jeremy","Here's how it works.",0,1,oMessagePerson,0)
-        newMessage.fadingTime=80*FPS_SCA
+        newMessage.fadingTime=80
       }
       else if sceneDelay=230
         createScreenText(60,160,570,fnt_EnemyName,fa_left,string("Control the angle of the arrow by holding [Left] or [") +string(global.ctrlLeft) +string("] to rotate left.#[Right] or [") +string(global.ctrlRight) +string("] to rotate right.#To fire a Virus Control Bubble, press [") +string(global.ctrlActA) +string("]Red, [") +string(global.ctrlActB) +string("]Green, or [") +string(global.ctrlActC) +string("]Blue.#Keep Jerry safe from the Virus attacks."),3,c_white,1,0)
-      else if sceneDelay=670*FPS_SCA
+      else if sceneDelay=670
       {
         msgCreate(0,0,"Jeremy","Fend them off while I get your movement working again.",0,1,oMessagePerson,0)
-        newMessage.fadingTime=120*FPS_SCA
+        newMessage.fadingTime=120
       }
       else if sceneDelay=800
       {
