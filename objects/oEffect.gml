@@ -4,8 +4,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-x+=xSpd
-y+=ySpd
+x+=xSpd/FPS_SCA
+y+=ySpd/FPS_SCA
 if decay!=-100
 {
   decay-=1

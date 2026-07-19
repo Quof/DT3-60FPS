@@ -80,9 +80,8 @@ It seems like most visual effects will have code that looks like this:
 	  
 What you want to change is:
 1) halve the image_speeds
-2) halve the xSpds/ySpds (if they're above 0)
 
-Do not touch tEffect.decay=-100. Although it may be that it should be =-200 in current code for now that may be something that is handled elsewhere. (Or maybe I'm wrong).
+Do not touch tEffect.decay=-100. Also the xSpd/ySpd should be already halved in the oEffect parent.
 
 
 5) BOSS AI

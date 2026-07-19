@@ -200,7 +200,7 @@ else if global.gameProgress=1 and room=rMain_1 //----- [] Virus attacks -----
       else if sceneDelay=120
       {
         virusAtk=instance_create(room_width+8,2032,oSeekerVirusBasic)
-        virusAtk.type=0; virusAtk.moveSpd=1/FPS_SCA; virusAtk.direction=180
+        virusAtk.type=0; virusAtk.moveSpd=1; virusAtk.direction=180
       }
       else if sceneDelay>=150 and sceneDelay<=999
       {
