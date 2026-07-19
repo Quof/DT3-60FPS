@@ -1,0 +1,4 @@
+npcTag=11
+sprite_index=sBubblun_Idle
+image_speed=0.12
+image_xscale=-1

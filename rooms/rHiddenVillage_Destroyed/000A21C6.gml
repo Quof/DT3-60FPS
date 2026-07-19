@@ -1,0 +1,1 @@
+sprite_index=sNPC_EarthwormJim_Die

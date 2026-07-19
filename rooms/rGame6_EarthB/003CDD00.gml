@@ -1,0 +1,2 @@
+sprite_index=sG6_EarthPlatB
+bAutoMove=false

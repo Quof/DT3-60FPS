@@ -1,0 +1,1 @@
+sprite_index=sNPC_Klonoa_Die

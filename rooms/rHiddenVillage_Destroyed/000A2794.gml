@@ -1,0 +1,2 @@
+sprite_index=sNPC_Battletoad_Die
+image_xscale=-1
