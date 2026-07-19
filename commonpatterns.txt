@@ -24,12 +24,16 @@ xTime+=1
 xVel=
 yVel=
 .grav= 
+.moveSpd
+.bulletSpd
 
 In response:
 
 half animSpd
 half the 1 of xTime+=
 half the *assignment* of xVel/yVel (but avoid halving in cases it would reapply over and over until velocity is 0)
+half moveSpd
+half bulletSpd
 quarter the *assignment* of .grav for a new instance (try not to touch grav being applied each frame though, it seems to end poorly...?)
 
 
@@ -39,7 +43,7 @@ For enemies that bump into a wall and turn around, I've made two new scripts: is
 
 3) SUBPIXEL MOVEMENT
 
-The base moveTo function is totally fucked and rounds/fractions enemy movement. This will slow them down like up to 20% used natively. For now, I'm letting this happen with the hope/expectation that the moveTo function can be replaced with something (like moveToEdit) that does not have this problem. I have some code from Claude that *does* seemingly fix this with high accuracy, but I only used a few times before deciding to put it in the backburner as a high-complexity issue. The Claude code is as follows: 
+The base moveTo function is totally fucked and rounds/fractions enemy movement. This will slow them down like up to 20% used natively. (Because like a 1.2 acceleration is neatly 1 + 1/5, but 0.6 acceleration is never 1 + 1/x or something). For now, I'm letting this happen with the hope/expectation that the moveTo function can be replaced with something (like moveToEdit) that does not have this problem. I have some code from Claude that *does* seemingly fix this with high accuracy, but I only used a few times before deciding to put it in the backburner as a high-complexity issue. The Claude code is as follows: 
 
 ---Create Event
 
@@ -87,13 +91,13 @@ Then elsewhere atkTime will have single-instance modifiers like "atkTime+=atkDel
 
 
 6) oGame.time mods
-Often, to make something happen flip xth frame, there will be code like
+Often, to make something "flip" every xth frame, there will be code like
 
->if oGame.time mod 6=0
+	if oGame.time mod 6=0
 
 Historically, it seems like this wants to be changed to
 
->if current_frame mod 6*FPS_SCA=0
+	if current_frame mod 6*FPS_SCA=0
 
 current_frame is 8.2 exclusive though, I think, so this won't work on 8.1. But maybe oGame.time will work on 8.1
 
@@ -107,3 +111,19 @@ Most of the time, when a number is being checked, we don't want to alter the che
   yVel+=grav
  
 We actually DO want to half the "yVel" check. It's checking if it's less than 3; we want it to check if it's less than 3/2. Basically, something stuck at 1.5 velocity in 60fps is seemingly going as fast as something going 3 velocity in 30fps. So despite being a check, we do want to half the velocity being checked for. I think. This is just what has worked so far.
+
+8) Dialogue
+
+Main cutscenes progress follows sceneDelay+=1 much like atkTime. Not much to report here. Every single speech box in the game has to have its fading time multplied by two however.
+
+newMessage.fadingTime=100 
+->
+newMessage.fadingTime=100*FPS_SCA
+
+In 8.2 a convenient way to do this is to do a search for .fadingTime to highlight every instance then just scroll down applying it. I do this for atkTime too. 
+
+9) "0.5 pixels a frame"
+
+Something falling slowly is represented by oPlayer1.y+=1, for example. But I found that changing this to oPlayer1.y+=0.5 results in quite a noticeable stutter. It may be that the subpixels get all janky when trying to move half of a y position. What I found to work instead is to move 1 pixel every other frame like so.
+
+	if sceneDelay mod 1 = 0 {oPlayer1.y+=1} 

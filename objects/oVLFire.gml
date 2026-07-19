@@ -27,9 +27,12 @@ if global.gamePaused=false
   if yVel<0 {x+=xVel}
   else if yVel>0.4/FPS_SCA
   {
-    swirlProg+=1
+    /*swirlProg+=1
     if swirlProg>=1 and swirlProg<=6 {x+=1/FPS_SCA}
-    else if swirlProg>=7 and swirlProg<=12 //QWH. used to be: 1, 3, 4, 6.
+    else if swirlProg>=7 and swirlProg<=12 //QWH. used to be: 1, 3, 4, 6.*/
+    swirlProg+=1
+    if swirlProg>=1 and swirlProg<=3 {x+=1/FPS_SCA}
+    else if swirlProg>=4 and swirlProg<=6 //QWH.
     {
       x-=1/FPS_SCA
       if swirlProg=12 {swirlProg=0}
