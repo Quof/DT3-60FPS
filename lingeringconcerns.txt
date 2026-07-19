@@ -6,6 +6,9 @@ General
 
 2) Player physics; basically the oPlayer1 object and many associated scripts like pMoveJump are totally fucked. 
 
+3) Player animations are fucked up a little
+
+
 Specific
 
 1) The Fucking Birds
@@ -14,4 +17,6 @@ For some reason, it feels like title screen birds behave different from in-game 
 2) Cackletta's "difficulty curve" 
 
 I didn't touch a list of values in Cackletta's boss AI reflecting its difficulty curve. It may be that some of these should be doubled. I didn't feel like I fully understood what the lightWarn variable was doing.
+
+4) lava is sped up in mario 
 
