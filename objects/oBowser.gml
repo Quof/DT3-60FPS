@@ -59,7 +59,7 @@ if global.gamePaused=false
       if x<oPlayer1.x {image_xscale=1}
       else {image_xscale=-1}
 
-      atkTime+=1
+      atkTime+=1/FPS_SCA
       if atkTime>=jumpDelay
       {
         if isCollisionBottom(1)
@@ -84,25 +84,25 @@ if global.gamePaused=false
           }
           xDropSpot=oPlayer1.x
           xSpd=point_distance(x,0,xDropSpot,0)
-          xSpd/=12
-          if xSpd<2 {xSpd=2}
-          else if xSpd>8 {xSpd=8}
+          xSpd/=12/FPS_SCA
+          if xSpd<2/FPS_SCA {xSpd=2/FPS_SCA}
+          else if xSpd>8/FPS_SCA {xSpd=8/FPS_SCA}
           sprite_index=sBowserStand; image_index=1
           atkTime=0; atkProg+=1
         }
       }
       else //Hop
       {
-        hopTime-=1
+        hopTime-=1/FPS_SCA
         if hopTime<=0 and yVel=0
         {
           y-=2
-          yVel-=1.5
+          yVel-=1.5/FPS_SCA
           hopTime=30
         }
 
         //Fireball
-        fireTime+=1
+        fireTime+=1/FPS_SCA
         if fireTime>=fireDelay and y<328
         {
           if fireTime=fireDelay
@@ -154,7 +154,7 @@ if global.gamePaused=false
     }
     else if atkProg=1 //---------- Jump ----------
     {
-      if y>144 {y-=12}
+      if y>144 {y-=12/FPS_SCA}
       if x<xDropSpot
       {
         image_xscale=1
@@ -174,19 +174,19 @@ if global.gamePaused=false
     }
     else if atkProg=2 //---------- Slight air time ----------
     {
-      atkTime+=1
+      atkTime+=1/FPS_SCA
       if atkTime>=12
       {
         atkTime=0
         atkProg+=1
       }
-      else {y-=0.5}
+      else {y-=0.5/FPS_SCA}
     }
     else if atkProg=3 //---------- Butt stomp ----------
       yVel=10
     else if atkProg=4 //---------- Break block check ----------
     {
-      atkTime+=1
+      atkTime+=1/FPS_SCA
       if atkTime>=8
       {
         jumpNum+=1
@@ -205,7 +205,7 @@ if global.gamePaused=false
     }
 
     if atkProg=0 or atkProg=4 //Gravity
-      yVel+=0.2
+      yVel+=0.2/FPS_SCA/FPS_SCA
 
     if isCollisionSolid()
       y-=2
@@ -244,14 +244,14 @@ if global.gamePaused=false
     //----- Last block phase -----
     if bottomBlocks>=0 and bottomBlocks<=99
     {
-      bottomBlocks+=1
+      bottomBlocks+=1/FPS_SCA
       if bottomBlocks>=1 and bottomBlocks<=16 //Move bottom blocks down
       {
         var tInsCheck;
         tInsCheck=455498
         for(i=0;i<8;i+=1) //455498 - 455505
         {
-          (455498+i).y+=1
+          (455498+i).y+=1/FPS_SCA
         }
       }
       if bottomBlocks=20
@@ -282,14 +282,14 @@ if global.gamePaused=false
     }
     else if bottomBlocks>=200 and bottomBlocks<=400
     {
-      bottomBlocks+=1
+      bottomBlocks+=1/FPS_SCA
       if bottomBlocks>=281 and bottomBlocks<=296 //Move bottom blocks up
       {
         var tInsCheck;
         tInsCheck=455498
         for(i=0;i<8;i+=1) //455498 - 455505
         {
-          (455498+i).y-=1
+          (455498+i).y-=1/FPS_SCA
         }
       }
       else if bottomBlocks=300
@@ -308,7 +308,7 @@ if global.gamePaused=false
 
     if topFire>=1 //Fire from the top
     {
-      topFire+=1
+      topFire+=1/FPS_SCA
       if topFire mod 65=0
       {
         var tNewAttack;

@@ -22,6 +22,8 @@ For some reason, it feels like title screen birds behave different from in-game 
 
 I didn't touch a list of values in Cackletta's boss AI reflecting its difficulty curve. It may be that some of these should be doubled. I didn't feel like I fully understood what the lightWarn variable was doing.
 
+2.5) likely, adjust fireballs in Cackletta AI and in the sideEvent
+
 3) lava is sped up in mario 
 
 4) check mario 1up
@@ -29,3 +31,4 @@ I didn't touch a list of values in Cackletta's boss AI reflecting its difficulty
 5) mario flag event (go thru events in general)
 
 6) flying green coin
+

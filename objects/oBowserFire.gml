@@ -27,7 +27,7 @@ if global.gamePaused=false
   {
     if y<targetY
     {
-      y+=bulletSpeed
+      y+=bulletSpeed/FPS_SCA
       if baseDir=0
         direction=315
       else
@@ -35,7 +35,7 @@ if global.gamePaused=false
     }
     else
     {
-      y-=bulletSpeed
+      y-=bulletSpeed/FPS_SCA
       if baseDir=0
         direction=45
       else
