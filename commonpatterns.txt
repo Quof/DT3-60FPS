@@ -2,7 +2,7 @@ Simple Instructions for DT Code.........
 
 0) FPS_SCA
 
-The global variable FPS_SCA is declared in startup and is defined as 2. Things we want to halve to slow down should be divided by FPS_SCA, things we want to delay (like fading in 100 frames -> fading in 200 frames) should be multiplied by FPS_SCA. 
+The global variable FPS_SCA is declared in startup and is defined as 2 or 4 or whatever depending on desired FPS. Things we want to halve to slow down should be divided by FPS_SCA, things we want to delay (like fading in 100 frames -> fading in 200 frames) should be multiplied by FPS_SCA. 
 
 
 1) COMMON HALVING/QUARTERING PATTERNS
@@ -39,6 +39,8 @@ Do not touch animSpd for now.
 halve sceneDelay+=1
 halve fadeAlpha-=x / fadeAlpha+=x
 halve x.image_alpha-= / x.image_alpha+=
+halve convo[0]+=1 
+
 
 2) COLLISION
 

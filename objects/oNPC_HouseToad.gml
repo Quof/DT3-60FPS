@@ -7,7 +7,7 @@ applies_to=self
 image_speed=0
 makeActive()
 setCollisionBounds(-7,-24,7,-1)
-runAcc=1
+runAcc=1/FPS_SCA
 bWalking=false
 walkingTime=round(random(60)+30)
 #define Step_0

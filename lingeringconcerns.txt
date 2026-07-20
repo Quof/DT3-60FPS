@@ -18,5 +18,40 @@ For some reason, it feels like title screen birds behave different from in-game 
 
 3) death platform instances dont get deleted; room creation code
 
+4) recharge bar under bubble bobble thing too long
+
+6) go through pipes too fast
+
+8) swapping characters text too fast
+
+9) teleport unlock animation too fast
+
+10) sign text too fast
+
+11) ! block animation
+
+13) prrogram chip flashing (wareya mentioned this before 
+
+14) jerry attacks Cackletta too fast in the cutscene?
+
+15) lakitu things jerky movement AND bouncing too high after landing
+
+16) lil jumpers too weak
+
+17) toad in toad town going left/right too fast
+
+18) if you run alongside falling platforms in hammer bros castle, you fall a little due to gravity mishaps
+
+19) bullet bills going up = go way too fast
+
+20) donut code is fucked up
+
+21) falling spikes too fast
+
+22) AP level up text appears and disappears too quickly
+
+23) lakitu death animation too fast
+
+24) green coopas in Cackletta's castle probably are not moving correctly and dont end up in the proper place
 
 x) It's probably fine, but the Difficulty Curve sections of bosses could use a second rigorous look to confirm no adjusments need to be made.

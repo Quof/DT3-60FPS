@@ -113,7 +113,7 @@ if global.gamePaused=false
       if x<oPlayer1.x {xVel=runAcc}
       else {xVel=-runAcc}
       sprite_index=sFireBroWalk
-      animSpd=0.1/FPS_SCA
+      animSpd=0.1
     }
     else
     {
@@ -139,12 +139,12 @@ if global.gamePaused=false
       {
         sprite_index=sFireBroBreath
         image_index=0
-        animSpd=0.5/FPS_SCA
+        animSpd=0.5
       }
       else if throwTime>=throwDelay+1 and throwTime<=throwDelay+500
       {
         animSpd=0.33/FPS_SCA
-        if bEnraged=1 {animSpd=0.66/FPS_SCA}
+        if bEnraged=1 {animSpd=0.66}
 
         if image_index>=6 //On fire frame
         {

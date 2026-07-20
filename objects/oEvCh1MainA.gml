@@ -69,7 +69,7 @@ if global.gameProgress=0 and room=rMain_1 //----- [1] Jerry dropping down -----
   }
   else if sceneProgress=2
   {
-    if sceneDelay mod 1 = 0 {oPlayer1.y+=1} //QWH
+    if current_frame mod FPS_SCA == 0 {oPlayer1.y+=1} //QWH
 
     sceneDelay+=1/FPS_SCA
     if sceneDelay=5

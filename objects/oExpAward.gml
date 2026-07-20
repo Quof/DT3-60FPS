@@ -6,7 +6,7 @@ applies_to=self
 */
 if view_current=0
 {
-  image_alpha-=0.01
+  image_alpha-=0.01/FPS_SCA
   if image_alpha<=0 {instance_destroy()}
   if global.optShowHUD=1
   {

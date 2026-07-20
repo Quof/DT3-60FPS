@@ -64,15 +64,15 @@ if global.gamePaused=false
       image_xscale=-1
 
 
-    /*xRemainder+=xVel
+    xRemainder+=xVel
     xMove=round(xRemainder)
     xRemainder-=xMove
 
     yRemainder+=yVel
     yMove=round(yRemainder)
-    yRemainder-=yMove*/
+    yRemainder-=yMove
 
-    moveTo(xVel,yVel)
+    moveTo(xMove,yMove)
 
 
 

@@ -40,7 +40,7 @@ if global.gamePaused=false
   makeEnemyActive(1)
   if bActive=true
   {
-    fallingProgress+=1
+    fallingProgress+=1/FPS_SCA
     if fallingProgress=1
       x+=1
     else if fallingProgress>=2 and fallingProgress<=30
@@ -54,7 +54,7 @@ if global.gamePaused=false
     else if fallingProgress=31
       x=xstart
     else if fallingProgress>=32
-      y+=fallSpeed
+      y+=fallSpeed/FPS_SCA
   }
   if y>room_height+24
     instance_destroy()

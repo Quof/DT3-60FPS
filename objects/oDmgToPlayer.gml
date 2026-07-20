@@ -4,8 +4,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-hspeed=random_range(-2,2)
-vspeed=-random_range(4,6)
+hspeed=random_range(-2,2)/FPS_SCA
+vspeed=-random_range(4,6)/FPS_SCA
 dispTime=10
 
 drawType=0
@@ -30,7 +30,7 @@ applies_to=self
 */
 if view_current=0
 {
-  vspeed+=0.38
+  vspeed+=0.38/FPS_SCA
 
   if drawType=1
   {
@@ -48,10 +48,10 @@ if view_current=0
   draw_set_font(fnt_HUDnum)
   textDropShadow(round(damageValue),x,y,drawColor,c_black,2)
 
-  dispTime-=1
+  dispTime-=1/FPS_SCA
   if dispTime<=0
   {
-    image_alpha-=0.05
+    image_alpha-=0.05/FPS_SCA
     if image_alpha<=0 {instance_destroy()}
   }
 }

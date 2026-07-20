@@ -11,10 +11,10 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-decayTime-=1
+decayTime-=1/FPS_SCA
 if decayTime<=0
 {
-  image_alpha-=0.1
+  image_alpha-=0.1/FPS_SCA
   if image_alpha<=0 {instance_destroy()}
 }
 #define Draw_0

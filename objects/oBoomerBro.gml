@@ -143,7 +143,7 @@ if global.gamePaused=false
       else if throwTime>=throwDelay+1 and throwTime<=throwDelay+500
       {
         animSpd=0.33
-        if bEnraged=1 {animSpd=1/FPS_SCA}
+        if bEnraged=1 {animSpd=1}
 
         if image_index>=6 //On boomerang frame
         {

@@ -7,10 +7,10 @@ applies_to=self
 if textTime!=-1
 {
   if global.gamePaused=false
-    textTime-=1
+    textTime-=1/FPS_SCA
 
   if textTime>=1 and textTime<=25
-    image_alpha-=0.04
+    image_alpha-=0.04/FPS_SCA
   if textTime=0
     instance_destroy()
 }
@@ -18,7 +18,7 @@ if textTime!=-1
 if textType=1 //Marquee
 {
   textWidth=string_width(screenText)
-  x-=2
+  x-=2/FPS_SCA //QWH I don't know if this is right.
   if followType=0
   {
     if x<=-(string_width(screenText)*2)-4

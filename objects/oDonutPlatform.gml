@@ -27,6 +27,7 @@ if global.gamePaused=false
   if falling
   {
     yAcc=grav
+    yVel+=yAcc
     if yVel>6/FPS_SCA {yVel=6/FPS_SCA}
     returnAfterPeriodOfTime-=1/FPS_SCA
     if returnAfterPeriodOfTime=0

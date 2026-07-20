@@ -161,7 +161,7 @@ if global.gamePaused=false
       msgCreate(0,0,"Jerry","Whoa, what's going on here?",0,1,oMessagePerson,0)
       newMessage.fadingTime=90; charDialogue[0]+=1
     }
-    else if charDialogue[0]=1 {convo[0]+=1;if convo[0]>=100 {charDialogue[0]+=1; convo[0]=0}}
+    else if charDialogue[0]=1 {convo[0]+=1/FPS_SCA;if convo[0]>=100 {charDialogue[0]+=1; convo[0]=0}}
     else if charDialogue[0]=2
     {
       msgCreate(0,0,"Jeremy","It's a bug, just look closely.",0,1,oMessagePerson,0)
@@ -179,7 +179,7 @@ if global.gamePaused=false
       }
       sceneProgress+=1
     }
-    if charDialogue[0]=0 {convo[0]+=1;if convo[0]>=30 {charDialogue[0]+=1; convo[0]=0}}
+    if charDialogue[0]=0 {convo[0]+=1/FPS_SCA;if convo[0]>=30 {charDialogue[0]+=1; convo[0]=0}}
     else if charDialogue[0]=1
     {
       msgCreate(0,0,"Jeremy","Take this slow and watch for gaps.",0,1,oMessagePerson,0)

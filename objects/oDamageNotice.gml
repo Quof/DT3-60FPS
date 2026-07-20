@@ -4,8 +4,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-hspeed=random_range(-2,2)
-vspeed=-random_range(4,6)
+hspeed=random_range(-2,2)/FPS_SCA
+vspeed=-random_range(4,6)/FPS_SCA
 dispTime=10
 
 ranChoice=0
@@ -18,7 +18,7 @@ applies_to=self
 */
 if view_current=0
 {
-  vspeed+=0.38
+  vspeed+=0.38/FPS_SCA
   draw_set_halign(fa_center)
   draw_set_alpha(image_alpha)
 
@@ -45,10 +45,10 @@ if view_current=0
     textDropShadow(round(damageValue),x,y,damageColor,c_black,2)
   }
 
-  dispTime-=1
+  dispTime-=1/FPS_SCA
   if dispTime<=0
   {
-    image_alpha-=0.05
+    image_alpha-=0.05/FPS_SCA
     if image_alpha<=0 {instance_destroy()}
   }
 }

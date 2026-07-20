@@ -505,7 +505,7 @@ applies_to=self
 */
 if skipGameOver=2 //Skip Game Over
 {
-  backAlpha+=0.1
+  backAlpha+=0.1/FPS_SCA
   if backAlpha>=1
   {
     if GOMenuMin=1 {event_user(3)}

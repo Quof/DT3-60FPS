@@ -13,16 +13,16 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-lifeTime+=1
+lifeTime+=1/FPS_SCA
 if lifeTime>=1 and lifeTime<=100
 {
-  image_alpha+=0.05
+  image_alpha+=0.05/FPS_SCA
   if image_alpha=1
     lifeTime=200
 }
 else if lifeTime>=290
 {
-  image_alpha-=0.05
+  image_alpha-=0.05/FPS_SCA
   if image_alpha=0
     instance_destroy()
 }

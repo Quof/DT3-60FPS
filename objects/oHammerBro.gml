@@ -135,11 +135,11 @@ if global.gamePaused=false
       {
         sprite_index=sHammerBroThrow
         image_index=0
-        animSpd=0.5/FPS_SCA
+        animSpd=0.5
       }
       else if throwTime>=throwDelay+1 and throwTime<=throwDelay+500
       {
-        animSpd=0.5/FPS_SCA
+        animSpd=0.5
         if bEnraged=1 {animSpd=1}
 
         if image_index>=6 //On throw frame
