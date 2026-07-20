@@ -27,3 +27,5 @@ I didn't touch a list of values in Cackletta's boss AI reflecting its difficulty
 4) check mario 1up
 
 5) mario flag event (go thru events in general)
+
+6) flying green coin

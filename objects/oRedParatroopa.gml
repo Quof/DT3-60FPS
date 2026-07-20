@@ -62,9 +62,9 @@ if global.gamePaused=false
         dirChange=0
       }
     }
-    if isCollisionLeft(1)
+    if isCollisionLeftEdit(1)
       xVel*=-1
-    if isCollisionRight(1)
+    if isCollisionRightEdit(1)
       xVel*=-1
 
     if xVel>0

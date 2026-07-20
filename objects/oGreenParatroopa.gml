@@ -54,9 +54,9 @@ if global.gamePaused=false
     yVel+=0.3/FPS_SCA/FPS_SCA
     if isCollisionBottom(1)
       yVel=-6/FPS_SCA
-    if isCollisionLeft(1)
+    if isCollisionLeftEdit(1)
       xVel*=-1
-    if isCollisionRight(1)
+    if isCollisionRightEdit(1)
       xVel*=-1
     if isCollisionTop(1)
       yVel=0.1/FPS_SCA
