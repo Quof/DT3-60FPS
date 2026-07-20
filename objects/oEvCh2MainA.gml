@@ -219,7 +219,7 @@ else if global.gameProgress=160 and room=rMario1_1 //----- [2] (Unskippable unti
       else if global.activeCharacter=1 oPlayer1.sprite_index=sClaireIdle
       oPlayer1.image_speed=0.1
     }
-    else {oPlayer1.y+=4}
+    else {oPlayer1.y+=4/FPS_SCA}
     sceneDelay+=1/FPS_SCA
     if sceneDelay>=40 {sceneDelay=0; sceneProgress+=1}
   }
@@ -242,7 +242,7 @@ else if global.gameProgress=160 and room=rMario1_1 //----- [2] (Unskippable unti
   }
   else if sceneProgress=3
   {
-    oPlayer1.x+=7
+    oPlayer1.x+=7/FPS_SCA
     if oPlayer1.x>=5496
     {
       oPlayer1.x=5496
@@ -306,7 +306,7 @@ else if global.gameProgress=160 and room=rMario1_1 //----- [2] (Unskippable unti
   {
     sceneDelay+=1/FPS_SCA
     if sceneDelay=1 {fadeColor=c_black}
-    else if sceneDelay>=2 and sceneDelay<=21 {fadeAlpha+=0.05}
+    else if sceneDelay>=2 and sceneDelay<=21 {fadeAlpha+=0.05FPS_SCA}
     else if sceneDelay>=30 {sceneDelay=0; sceneProgress+=1}
   }
   else if sceneProgress=19 and bWaitForInput=false
@@ -383,7 +383,7 @@ else if global.gameProgress=200 and room=rMario1_3 //----- [3] Messed up area --
       global.gamePaused=true
     else if sceneDelay>=2
     {
-      oPlayer1.y+=4
+      oPlayer1.y+=4/FPS_SCA
       if oPlayer1.y>=176
       {
         scenePChk(oPlayer1.x,176,0,0.1,1)
@@ -483,7 +483,7 @@ else if global.gameProgress=230 and room=rMario1_4Boss //----- [Unskippable] Bos
       }
       else if sceneDelay>=16
       {
-        boss.y+=8
+        boss.y+=8/FPS_SCA
         if boss.y>=272
         {
           boss.activateBoss=1
@@ -536,7 +536,7 @@ else if global.gameProgress=250 and room=rMario1_4Story //----- [4] Cackletta ta
     }
     else if sceneDelay>=30
     {
-      fadeAlpha-=0.02
+      fadeAlpha-=0.02/FPS_SCA
       if fadeAlpha<=0 {sceneDelay=0; sceneProgress+=1}
     }
   }
@@ -566,7 +566,7 @@ else if global.gameProgress=250 and room=rMario1_4Story //----- [4] Cackletta ta
   else if sceneProgress=11
   {
     sceneDelay+=1/FPS_SCA
-    if sceneDelay>=11 and sceneDelay<=30
+    if sceneDelay>=11 and sceneDelay<=30 and current_frame mod 2 == 0 //QWH, added current_frame check here, might get stuck
       pChip.y+=1
     else if sceneDelay=31
     {
@@ -618,7 +618,7 @@ else if global.gameProgress=250 and room=rMario1_4Story //----- [4] Cackletta ta
     }
     else if sceneDelay>=45
     {
-      fadeAlpha-=0.02
+      fadeAlpha-=0.02/FPS_SCA
       if fadeAlpha<=0 {sceneDelay=0; sceneProgress+=1}
     }
   }
@@ -735,7 +735,7 @@ else if global.gameProgress=330 and room=rMario1_8 //----- [7] Finding your frie
   {
     sceneDelay+=1/FPS_SCA
     if sceneDelay=1 {global.gamePaused=true}
-    oPlayer1.y+=4
+    oPlayer1.y+=4/FPS_SCA
     if oPlayer1.y>=256
     {
       scenePChk(oPlayer1.x,256,0,0.1,1)
@@ -1055,7 +1055,7 @@ else if global.gameProgress=500 and room=rMario1_CCBoss //----- [13] Boss Fight:
       sceneDelay+=1/FPS_SCA
       if sceneDelay=1
         global.gamePaused=true
-      oPlayer1.y+=4
+      oPlayer1.y+=4/FPS_SCA
       if oPlayer1.y>=272
       {
         scenePChk(oPlayer1.x,272,0,0.1,1)
@@ -1074,7 +1074,7 @@ else if global.gameProgress=500 and room=rMario1_CCBoss //----- [13] Boss Fight:
         view_object[0]=viewFix
       }
       else if sceneDelay>=11 and sceneDelay<=50
-        viewFix.x+=4
+        viewFix.x+=4/FPS_SCA //QWH not sure if this is good
       if sceneDelay>=70
       {
         sceneDelay=0
@@ -1092,7 +1092,7 @@ else if global.gameProgress=500 and room=rMario1_CCBoss //----- [13] Boss Fight:
         boss.image_alpha=0
       }
       else if sceneDelay>=11 and sceneDelay<=30
-        boss.image_alpha+=0.05
+        boss.image_alpha+=0.05/FPS_SCA
       else if sceneDelay>=50 {sceneDelay=0; sceneProgress+=1}
     }
     else if sceneProgress=4 and bWaitForInput=false
@@ -1166,7 +1166,7 @@ else if global.gameProgress=500 and room=rMario1_CCBoss //----- [13] Boss Fight:
   {
     if sceneProgress=0
     {
-      if fadeAlpha<1 {fadeAlpha+=0.05}
+      if fadeAlpha<1 {fadeAlpha+=0.05/FPS_SCA}
       else if fadeAlpha>=1 {sceneProgress+=1}
     }
     else if sceneProgress=1
@@ -1189,7 +1189,7 @@ else if global.gameProgress=500 and room=rMario1_CCBoss //----- [13] Boss Fight:
     }
     else if sceneProgress=2
     {
-      if fadeAlpha>0 {fadeAlpha-=0.05}
+      if fadeAlpha>0 {fadeAlpha-=0.05/FPS_SCA}
       else if fadeAlpha<=0 {sceneProgress+=1}
     }
     else if sceneProgress=3
@@ -1468,7 +1468,7 @@ if global.gamePaused=false
   {
     oPlayer1.bKeepPlayerOnScreen=0
     if autoScroll.x<room_width-256
-      autoScroll.x+=xScrollSpd
+      autoScroll.x+=xScrollSpd/FPS_SCA
 
     if autoScroll.x-(view_wview[0]/2)-20>oPlayer1.x
       oPlayer1.life-=oPlayer1.maxLife

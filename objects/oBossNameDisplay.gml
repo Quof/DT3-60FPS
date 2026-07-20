@@ -12,12 +12,12 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-displayTime+=1
+displayTime+=1/FPS_SCA
 if displayTime>=1 and displayTime<=25
-  image_alpha+=0.04
+  image_alpha+=0.04/FPS_SCA
 else if displayTime>=95
 {
-  image_alpha-=0.04
+  image_alpha-=0.04/FPS_SCA
   if image_alpha<=0
     instance_destroy()
 }
