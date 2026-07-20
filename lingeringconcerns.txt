@@ -26,11 +26,9 @@ For some reason, it feels like title screen birds behave different from in-game 
 
 6) green coins need to be adjusted, when dropped they bounce about way too quickly
 
-7) I'm not touching jumper bounces (-16 velocity) until player physics are sorted
+7) petroleum bug; pipe flower to the left of boss gallery
 
-8) petroleum bug; pipe flower to the left of boss gallery
-
-9) death platform instances dont get deleted; room creation code
+8) death platform instances dont get deleted; room creation code
 
 
 x) It's probably fine, but the Difficulty Curve sections of boss could use a second rigorous look to confirm no adjusments need to be made.

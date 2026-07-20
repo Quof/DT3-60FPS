@@ -26,9 +26,9 @@ if global.gamePaused=false
   if bouncePlayerTime>0
   {
     oPlayer1.yVel=-16
-    bouncePlayerTime-=1
+    bouncePlayerTime-=1/FPS_SCA
   }
-  yVel+=0.3/FPS_SCA/FPS_SCA
+  yVel+=0.3/FPS_SCA
   if isCollisionBottom(1)
     yVel=0
   moveTo(xVel,yVel)
