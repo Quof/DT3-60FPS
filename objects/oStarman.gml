@@ -21,24 +21,24 @@ if global.gamePaused=false
 {
   if messageDelayTime>0 {messageDelayTime-=1}
 
-  moveProg+=1
+  moveProg+=1/FPS_SCA
   if moveProg<=32
   {
-    y-=0.5
+    y-=0.5/FPS_SCA
     if moveProg=32
     {
-      xVel=2.5
+      xVel=2.5/FPS_SCA
       if x>=oPlayer1.x
-        xVel=2.5
+        xVel=2.5/FPS_SCA
       else
-        xVel=-2.5
+        xVel=-2.5/FPS_SCA
     }
   }
   else
   {
-    yVel+=0.3
+    yVel+=0.3/FPS_SCA/FPS_SCA
     if isCollisionBottom(1)
-      yVel=-5
+      yVel=-5/FPS_SCA
     if isCollisionLeft(1)
       xVel*=-1
     if isCollisionRight(1)

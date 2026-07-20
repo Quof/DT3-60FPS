@@ -9,7 +9,7 @@ setCollisionBounds(1,0,sprite_width,sprite_height)
 image_xscale=2
 image_yscale=2
 image_speed=0.33
-yVel=-4
+yVel=-4/FPS_SCA
 alarm[0]=1
 #define Alarm_0
 /*"/*'/**//* YYD ACTION
@@ -31,7 +31,7 @@ applies_to=self
 */
 if global.gamePaused=false
 {
-  yVel+=0.3
+  yVel+=0.3/FPS_SCA/FPS_SCA
 
   if isCollisionBottom(1)
     yVel=0
