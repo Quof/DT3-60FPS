@@ -183,7 +183,7 @@ if global.gamePaused=false
       else {y-=0.5/FPS_SCA}
     }
     else if atkProg=3 //---------- Butt stomp ----------
-      yVel=10
+      yVel=10/FPS_SCA
     else if atkProg=4 //---------- Break block check ----------
     {
       atkTime+=1/FPS_SCA
@@ -254,8 +254,9 @@ if global.gamePaused=false
           (455498+i).y+=1/FPS_SCA
         }*/
           with (oMarioBreakBlock)
-            if /*current_frame mod 2 == 0 and*/ moveGroup==1
-                {y+=1}
+            if variable_local_exists("moveGroup")
+                 if moveGroup==1
+                    {y+=1/FPS_SCA}
       }
       if bottomBlocks=20
       {
@@ -263,6 +264,12 @@ if global.gamePaused=false
         (122345).bTellMeToExplode=1
         (122358).bTellMeToExplode=1
         (122359).bTellMeToExplode=1*/ //QWH, TEST
+
+        with (oMarioBreakBlock)
+            if variable_local_exists("willExplode")
+                if willExplode==1
+                    {bTellMeToExplode=1}
+
         instance_create(608,288,oBowSwitch)
         instance_create(832,288,oBowSwitch)
         bottomBlocks=100
@@ -295,8 +302,10 @@ if global.gamePaused=false
           (455498+i).y-=1/FPS_SCA
         } */
 
-        with (oBowBottomBlock)
-            y+=1/FPS_SCA
+      with (oMarioBreakBlock)
+            if variable_local_exists("moveGroup")
+                if moveGroup==1
+                    {y-=1/FPS_SCA}
       }
       else if bottomBlocks=300
       {

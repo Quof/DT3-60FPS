@@ -49,7 +49,7 @@ if global.gamePaused=false
     }
   }
 
-  speed=bulletSpeed
+  speed=bulletSpeed/FPS_SCA
   image_angle=direction
 }
 else
