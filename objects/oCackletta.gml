@@ -521,22 +521,22 @@ if global.gamePaused=false
     if bossProgress=0 and life=3
     {
       lightAmt+=1
-      lightWarn-=4/FPS_SCA
-      lightDecay+=4/FPS_SCA
+      lightWarn-=4
+      lightDecay+=4
       fireAmt+=2
       bossProgress+=1
     }
     else if bossProgress=1 and life=2
     {
       lightAmt+=1
-      lightWarn-=4/FPS_SCA
-      lightDecay+=4/FPS_SCA
+      lightWarn-=4
+      lightDecay+=4
       bossProgress+=1
     }
     else if floorSeq=0 and life=1
     {
-      lightWarn-=1/FPS_SCA
-      lightDecay+=1/FPS_SCA
+      lightWarn-=1
+      lightDecay+=1
       teleAmt+=2
       floorSeq=1
     }
