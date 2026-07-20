@@ -29,7 +29,7 @@ if global.gamePaused=false
   }
 
   if place_meeting(x,y,oNightmareEffect) {speed=bulletSpeed/2}
-  else {speed=bulletSpeed}
+  else {speed=bulletSpeed/FPS_SCA}
   image_angle=direction
 }
 else {speed=0}
