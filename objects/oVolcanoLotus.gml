@@ -42,7 +42,7 @@ if global.gamePaused=false
     annoyTime+=1/FPS_SCA
     if annoyTime<annoyDelay //Idle anim
     {
-      if current_frame mod 6*FPS_SCA=0
+      if current_frame mod 6*FPS_SCA==0
       {
         if image_index=0
           image_index=1

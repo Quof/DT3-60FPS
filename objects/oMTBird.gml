@@ -4,7 +4,6 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-FPS_SCA = 2
 image_speed=(0.15+random(0.1))/FPS_SCA
 image_xscale=choose(-1,1)
 moveSpd=0.25+random(0.75)
@@ -17,8 +16,6 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-FPS_SCA = 2
-
 if image_xscale=1
   x+=moveSpd/FPS_SCA
 else

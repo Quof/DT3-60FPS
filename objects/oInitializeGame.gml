@@ -66,8 +66,6 @@ subtitleAlpha=0
 fileWAlpha=0
 textColorMain=make_color_rgb(240,240,240)
 textColorShadow=make_color_rgb(0,120,72)
-globalvar FPS_SCA;
-FPS_SCA=4 //QWH
 
 //-- Characters stuff --
 charJerry=instance_create(424,305,oMisc)

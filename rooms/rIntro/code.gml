@@ -1,9 +1,6 @@
 set_application_title("DT3: Saved Game")
 
-globalvar gDeltaTime, gDeltaDoTicks, gDeltaTick;
-gDeltaTime = 0.5
-gDeltaDoTicks = 0
-gDeltaTick = 0.0
+
 
 global.paraString[0]="DT3data.dts"
 
@@ -21,7 +18,13 @@ if pNum>0
 
 //Initialize
 global.modeSpeed=0
-global.gameFrameRate=60
+globalvar FPS_SCA;
+FPS_SCA=4 //QWH
+globalvar gDeltaTime, gDeltaDoTicks, gDeltaTick;
+gDeltaTime = 1/FPS_SCA
+gDeltaDoTicks = 0
+gDeltaTick = 0.0
+global.gameFrameRate=30*FPS_SCA
 
 global.bNightmareMode=0
 global.bCanUseEsc=1
