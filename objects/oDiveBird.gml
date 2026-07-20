@@ -56,7 +56,7 @@ if global.gamePaused=false
     if flyBackTime<=0
     {
       sprite_index=sDiveBird_Fly
-      image_speed=0.33/FPS_SCA
+      image_speed=0.33
       visible=1
       x=choose(-48,room_width+48)
       y=ystart+random_range(-room_height/1.75,room_height/1.75)
@@ -189,7 +189,7 @@ if global.gamePaused=false
         direction=point_direction(x,y-7,eDistCheck.bbox_left+(eDistCheck.sprite_width/2),eDistCheck.bbox_top+(eDistCheck.sprite_height/2))-180
         if direction>=90 and direction<=270 {image_xscale=1}
         else {image_xscale=-1}
-        image_speed=0.33/FPS_SCA
+        image_speed=0.33
         behavior+=1
       }
     }

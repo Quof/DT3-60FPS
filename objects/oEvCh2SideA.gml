@@ -63,12 +63,12 @@ if global.gamePaused=false
         if i=0
         {
           tNewPlat=instance_create(2464,-16,oPlatformAutoMove)
-          tNewPlat.moveSpeedY=2/FPS_SCA
+          tNewPlat.moveSpeedY=2
         }
         else
         {
           tNewPlat=instance_create(2784,room_height+16,oPlatformAutoMove)
-          tNewPlat.moveSpeedY=-2/FPS_SCA
+          tNewPlat.moveSpeedY=-2
         }
         tNewPlat.sprite_index=sInvisibleSolidMask
         tNewPlat.image_xscale=4; tNewPlat.spriteChange=1; tNewPlat.moveSpeedX=0
@@ -135,7 +135,7 @@ if global.gamePaused=false
   {
     if !instance_exists(oLakitu)
     {
-      lakituSpawn+=1
+      lakituSpawn+=1/FPS_SCA
       if lakituSpawn=210
       {
         var tNewEnemy;

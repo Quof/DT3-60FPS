@@ -5,7 +5,7 @@ action_id=603
 applies_to=self
 */
 setCollisionBounds(0,0,sprite_width,sprite_height)
-image_speed=0.15/FPS_SCA
+image_speed=0.15
 hitTime=0
 bTellMeToExplode=0
 #define Step_0

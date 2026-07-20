@@ -15,17 +15,17 @@ applies_to=self
 */
 if global.gamePaused=false
 {
-  moveProg+=1
+  moveProg+=1/FPS_SCA
   if moveProg<=32
   {
-    y-=0.5
+    y-=0.5/FPS_SCA
     if moveProg=32
     {
-      xVel=2.5
+      xVel=2.5/FPS_SCA
       if x>=oPlayer1.x
-        xVel=2.5
+        xVel=2.5/FPS_SCA
       else
-        xVel=-2.5
+        xVel=-2.5/FPS_SCA
     }
   }
   else
@@ -40,7 +40,7 @@ if global.gamePaused=false
     moveTo(xVel,yVel)
 
     if isCollisionSolid()
-      y-=2
+      y-=2/FPS_SCA
     if y>room_height+24
       instance_destroy()
   }

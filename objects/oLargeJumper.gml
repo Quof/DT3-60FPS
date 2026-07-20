@@ -33,7 +33,7 @@ if global.gamePaused=false
     yVel=0
   moveTo(xVel,yVel)
   if isCollisionSolid()
-    y-=2
+    y-=2/FPS_SCA
   if y>room_height+24
     instance_destroy()
 }

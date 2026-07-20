@@ -4,7 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-image_speed=0.4/FPS_SCA
+image_speed=0.4
 moneyWorth=1
 #define Collision_oPlayer1
 /*"/*'/**//* YYD ACTION

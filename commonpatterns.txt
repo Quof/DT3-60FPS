@@ -81,6 +81,7 @@ What you want to change is:
 
 Do not touch tEffect.decay=-100. Also the xSpd/ySpd should be already halved in the oEffect parent.
 
+effectSize[i] or effectAlpha[i] type statements will modification
 
 5) BOSS AI
 

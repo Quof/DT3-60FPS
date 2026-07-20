@@ -4,7 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-image_speed=0.16/FPS_SCA
+image_speed=0.16
 indexCheck="0"
 bCanPickUp=1
 if global.difficulty=1 {bCanPickUp=0}

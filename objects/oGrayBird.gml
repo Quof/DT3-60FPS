@@ -5,8 +5,8 @@ action_id=603
 applies_to=self
 */
 image_speed=0.2+random(0.2)
-moveSpdX=3+random(5)
-moveSpdY=random_range(-0.25,0.25)
+moveSpdX=(3+random(5))/FPS_SCA
+moveSpdY=(random_range(-0.25,0.25))/FPS_SCA
 bSpotted=0
 #define Step_0
 /*"/*'/**//* YYD ACTION

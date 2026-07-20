@@ -7,7 +7,7 @@ applies_to=self
 event_inherited()
 makeActive()
 setCollisionBounds(-10,-31,10,-1)
-animSpd=0.1/FPS_SCA
+animSpd=0.1
 image_speed=animSpd
 
 //Enemy base statistics

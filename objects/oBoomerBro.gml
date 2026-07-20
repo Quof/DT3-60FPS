@@ -7,7 +7,7 @@ applies_to=self
 event_inherited()
 makeActive()
 setCollisionBounds(-10,-31,10,-1)
-animSpd=0.1/FPS_SCA
+animSpd=0.1
 image_speed=animSpd
 
 //Enemy base statistics
@@ -112,7 +112,7 @@ if global.gamePaused=false
       else {xVel=-runAcc}
 
       sprite_index=sBoomerBroWalk
-      animSpd=0.1/FPS_SCA
+      animSpd=0.1
     }
     else
     {
@@ -138,11 +138,11 @@ if global.gamePaused=false
       {
         sprite_index=sBoomerBroThrow
         image_index=0
-        animSpd=0.5/FPS_SCA
+        animSpd=0.5
       }
       else if throwTime>=throwDelay+1 and throwTime<=throwDelay+500
       {
-        animSpd=0.33/FPS_SCA
+        animSpd=0.33
         if bEnraged=1 {animSpd=1/FPS_SCA}
 
         if image_index>=6 //On boomerang frame
