@@ -556,7 +556,7 @@ if global.gamePaused=false
           tEffect.fadeAlpha=0.04+random(0.02); tEffect.imageRot=random_range(-5,5)
         }
       }
-      if current_frame mod 2==0 and y<yGround {y+=1}
+      if current_frame mod FPS_SCA==0 and y<yGround {y+=1}
 
       if atkTime>=105 {atkTime=0; atkSequence+=1}
     }

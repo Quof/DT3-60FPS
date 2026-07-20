@@ -4,7 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if current_frame mod 2 == 0 then { x-=1 } //QWH, added mod condition if statement
+if current_frame mod FPS_SCA == 0 then { x-=1 } //QWH, added mod condition if statement
 if x<-64
   instance_destroy()
 #define Draw_0

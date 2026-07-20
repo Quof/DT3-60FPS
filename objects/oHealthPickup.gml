@@ -49,8 +49,8 @@ applies_to=self
 */
 if global.gamePaused=false
 {
-  yVel+=0.2
-  if yVel>yVelLimit {yVel=yVelLimit}
+  yVel+=0.2/FPS_SCA/FPS_SCA
+  if yVel>yVelLimit/FPS_SCA {yVel=yVelLimit/FPS_SCA}
 
   if sprite_index!=sMetroidHealthPickup
   {
@@ -65,7 +65,7 @@ if global.gamePaused=false
 
   if room=rWarshipQ
   {
-    decayTime-=1
+    decayTime-=1/FPS_SCA
     if decayTime>=1 and decayTime<=60
     {
       if image_alpha=0.75 {image_alpha=0.5}
