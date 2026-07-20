@@ -40,6 +40,8 @@ x) It's probably fine, but the Difficulty Curve sections of bosses could use a s
 
 x) I went through the Alerts and updated most of them, will want to double-check each in game. Didn't touch Gate 6's.
 
+test
+
 -----Enemies With Acceleration of 1 and Thus Fucked By Subpixels
 
 1) lakitu spikey
