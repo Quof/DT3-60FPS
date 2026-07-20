@@ -18,15 +18,16 @@ For some reason, it feels like title screen birds behave different from in-game 
 
 1.75) Bird attack is too fast
 
-2) Cackletta's "difficulty curve" 
-
-I didn't touch a list of values in Cackletta's boss AI reflecting its difficulty curve. It may be that some of these should be doubled. I didn't feel like I fully understood what the lightWarn variable was doing.
-
 3) lava is sped up in mario 
 
 4) check mario 1up
 
-5) mario flag event (go thru events in general)
+5) mario flag event, you fall too quickly (go thru events in general)
 
-6) flying green coin
+6) green coins need to be adjusted, when dropped they bounce about way too quickly
 
+7) I'm not touching jumper bounces (-16 velocity) until player physics are sorted
+
+
+
+x) It's probably fine, but the Difficulty Curve sections of boss could use a second rigorous look to confirm no adjusments need to be made.
