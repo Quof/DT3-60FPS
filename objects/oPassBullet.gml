@@ -24,7 +24,7 @@ if global.gamePaused=false
   if init=0 {init=1}
   if decayTime!=-100
   {
-    decayTime-=1
+    decayTime-=1/FPS_SCA
     if decayTime<=0 {instance_destroy()}
   }
 

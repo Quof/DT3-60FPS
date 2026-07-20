@@ -87,7 +87,7 @@ if global.gamePaused=false
         {
           tNewAttack=instance_create(view_xview[0]+view_wview[0]+8,200+(i*16),oPassBullet)
           tNewAttack.sprite_index=sBowserFire1; tNewAttack.atkPower=4
-          tNewAttack.bulletSpeed=3/FPS_SCA; tNewAttack.direction=180; tNewAttack.decayTime=-100
+          tNewAttack.bulletSpeed=3; tNewAttack.direction=180; tNewAttack.decayTime=-100
         }
         bowserFireProg+=1
       }
@@ -99,7 +99,7 @@ if global.gamePaused=false
         {
           tNewAttack=instance_create(view_xview[0]+view_wview[0]+8,168+(i*16),oPassBullet)
           tNewAttack.sprite_index=sBowserFire1; tNewAttack.atkPower=4
-          tNewAttack.bulletSpeed=3/FPS_SCA; tNewAttack.direction=180; tNewAttack.decayTime=-100
+          tNewAttack.bulletSpeed=3; tNewAttack.direction=180; tNewAttack.decayTime=-100
         }
         bowserFireProg+=1
       }
@@ -111,7 +111,7 @@ if global.gamePaused=false
         {
           tNewAttack=instance_create(view_xview[0]+view_wview[0]+8,168+(i*16),oPassBullet)
           tNewAttack.sprite_index=sBowserFire1; tNewAttack.atkPower=4
-          tNewAttack.bulletSpeed=3/FPS_SCA; tNewAttack.direction=180; tNewAttack.decayTime=-100
+          tNewAttack.bulletSpeed=3; tNewAttack.direction=180; tNewAttack.decayTime=-100
         }
         bowserFireProg+=1
       }
@@ -126,7 +126,7 @@ if global.gamePaused=false
         var tNewAttack;
         tNewAttack=instance_create(view_xview[0]+view_wview[0]+8,random_range(176,240),oPassBullet)
         tNewAttack.sprite_index=sBowserFire1; tNewAttack.atkPower=4
-        tNewAttack.bulletSpeed=3/FPS_SCA; tNewAttack.direction=180; tNewAttack.decayTime=-100
+        tNewAttack.bulletSpeed=3; tNewAttack.direction=180; tNewAttack.decayTime=-100
         bowserFire=0
       }
     }

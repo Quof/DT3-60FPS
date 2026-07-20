@@ -126,7 +126,7 @@ if global.gamePaused=false
           if i<3 {tFire.direction=0}
           else {tFire.direction=180}
           tFire.sprite_index=sBowserFire1; tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-          tFire.bulletSpeed=(10+random(2))/FPS_SCA; tFire.decayTime=-100
+          tFire.bulletSpeed=(10+random(2)); tFire.decayTime=-100
         }
         atkTime+=bossProgress*4
       }
@@ -147,7 +147,7 @@ if global.gamePaused=false
             tFire.direction=180
           }
           tFire.sprite_index=sBowserFire1; tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-          tFire.bulletSpeed=(1+fireAmt)/FPS_SCA; tFire.decayTime=150*FPS_SCA
+          tFire.bulletSpeed=(1+fireAmt); tFire.decayTime=150
         }
         atkTime+=bossProgress*5/FPS_SCA
       }
@@ -220,7 +220,7 @@ if global.gamePaused=false
           else {tFire.direction=138-i}
           tFire.sprite_index=sBowserFire1
           tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-          tFire.bulletSpeed=(6+random(3))/FPS_SCA; tFire.decayTime=-100*FPS_SCA
+          tFire.bulletSpeed=(6+random(3)); tFire.decayTime=-100
         }
         atkTime+=bossProgress*3
       }
@@ -235,12 +235,12 @@ if global.gamePaused=false
           tFire=instance_create(tRanX,-4,oPassBullet)
           tFire.direction=260+random(20); tFire.sprite_index=sBowserFire1
           tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-          tFire.bulletSpeed=(1+(fireAmt*1.25))/FPS_SCA; tFire.decayTime=150*FPS_SCA
+          tFire.bulletSpeed=(1+(fireAmt*1.25)); tFire.decayTime=150
 
           tFire=instance_create(oPlayer1.x,-4,oPassBullet)
           tFire.direction=270; tFire.sprite_index=sBowserFire1
           tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-          tFire.bulletSpeed=4/FPS_SCA; tFire.decayTime=150*FPS_SCA
+          tFire.bulletSpeed=4; tFire.decayTime=150
         }
       }
       else if atkTime=160+(bossProgress*40)
@@ -290,13 +290,13 @@ if global.gamePaused=false
           {
             tFire=instance_create(xCenter-roomSpan-68,yGround-8,oPassBullet)
             tFire.sprite_index=sBowserFire1; tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-            tFire.bulletSpeed=5/FPS_SCA; tFire.decayTime=150*FPS_SCA
+            tFire.bulletSpeed=5; tFire.decayTime=150
           }
           else
           {
             tFire=instance_create(xCenter+roomSpan+68,yGround-8,oPassBullet)
             tFire.sprite_index=sBowserFire1; tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-            tFire.bulletSpeed=5/FPS_SCA; tFire.decayTime=150*FPS_SCA; tFire.direction=180
+            tFire.bulletSpeed=5; tFire.decayTime=150; tFire.direction=180
           }
         }
       }
@@ -398,7 +398,7 @@ if global.gamePaused=false
             {
               tFire=instance_create(xCenter-roomSpan-68,yGround-8-(i*20),oPassBullet)
               tFire.sprite_index=sBowserFire1; tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-              tFire.bulletSpeed=5/FPS_SCA; tFire.decayTime=150*FPS_SCA
+              tFire.bulletSpeed=5; tFire.decayTime=150
             }
 
           }
@@ -408,7 +408,7 @@ if global.gamePaused=false
             {
               tFire=instance_create(xCenter+roomSpan+68,yGround-8-(i*20),oPassBullet)
               tFire.sprite_index=sBowserFire1; tFire.atkPower=atkPower; tFire.damageType="ELEMENTAL"
-              tFire.bulletSpeed=5/FPS_SCA; tFire.decayTime=150*FPS_SCA; tFire.direction=180
+              tFire.bulletSpeed=5; tFire.decayTime=150; tFire.direction=180
             }
           }
         }
