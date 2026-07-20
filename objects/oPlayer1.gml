@@ -10,6 +10,7 @@ if global.modeDark=1
 {
   instance_create(0,0,oSurfLightAll)
 }
+ditherCounter=0
 
 room_speed=global.gameFrameRate
 instance_create(0,0,oScreenCutIn)
@@ -362,6 +363,8 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+ditherCounter+=1
+
 if global.cutscene=true
 {
   if global.activeCharacter=4 {charJeremyStepEvent()}

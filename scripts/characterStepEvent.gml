@@ -361,9 +361,12 @@ if state=CLIMBING and bTakingDamage=false
   if kDown {yAcc+=climbAcc}
 }
 
+var xAccInputWalk;
+xAccInputWalk = xAcc
+
 if platformCharacterIs(IN_AIR)
 {
-  yAcc+=gravityIntensity//*gDeltaTime
+  yAcc+=gravityIntensity
 }
 if (isCollisionBottom(1) or isCollisionPlatformBottom(1) and isCollisionPlatform()=0) and platformCharacterIs(IN_AIR) and yVel>=0
 {
@@ -387,7 +390,7 @@ if platformCharacterIs(ON_GROUND) and yVel>0.25 {yVel=0}
 if isCollisionBottom(1)=0 and (isCollisionPlatformBottom(1)=0 or isCollisionPlatform()) and platformCharacterIs(ON_GROUND)
 {
   state=FALLING
-  yAcc+=grav//*gDeltaTime
+  yAcc+=grav
 }
 if isCollisionTop(1) and state=JUMPING
 {
@@ -482,7 +485,8 @@ if bTakingDamage=false
               jumps=1
               flyAccTimer=5
               flyDir=facing //either LEFT or RIGHT
-              yAcc+=initialJumpAcc*0.7
+              //yAcc+=initialJumpAcc*0.7
+              yVel+=initialJumpAcc*0.7
               if canFly
               {
                 flyInitialHeight=y
@@ -530,7 +534,8 @@ if bTakingDamage=false
               jumps=1
               flyAccTimer=5
               flyDir=facing //either LEFT or RIGHT
-              yAcc+=initialJumpAcc*0.7
+              //yAcc+=initialJumpAcc*0.7
+              yVel+=initialJumpAcc*0.7
               if canFly
               {
                 flyInitialHeight=y
@@ -599,10 +604,8 @@ if bTakingDamage=false
       {
         playSound(global.snd_PlayerJump[2],0,1,1)
         global.recJumped+=1
-        //if bombJump=0 {yAcc=initialJumpAcc}
-        //else {yAcc=initialJumpAcc*bombAcc}
-        if bombJump=0 {yVel=initialJumpAcc}
-        else {yVel=initialJumpAcc*bombAcc}
+        if bombJump=0 {yAcc=initialJumpAcc}
+        else {yAcc=initialJumpAcc*bombAcc}
         bombJump=0
         //xAcc+=xVel/2
         var tEffect;
@@ -695,11 +698,11 @@ if airDashRecovery>0 //Continue air dash
   else if facing=LEFT {xVel=-(dashVel-1)}
 }
 
-if mobilityDisable>0 {mobilityDisable-=1} //Double jump / Air-dash disable after split party character swap
-if dashMomentumTime>0 {dashMomentumTime-=1} //Dash momentum
-if doubleJumpAnim>0 {doubleJumpAnim-=1} //Double jump animation
+if mobilityDisable>0 {mobilityDisable-=gDeltaTime} //Double jump / Air-dash disable after split party character swap
+if dashMomentumTime>0 {dashMomentumTime-=gDeltaTime} //Dash momentum
+if doubleJumpAnim>0 {doubleJumpAnim-=gDeltaTime} //Double jump animation
 
-if jumpTime<jumpTimeTotal {jumpTime+=1*gDeltaTime}
+if jumpTime<jumpTimeTotal {jumpTime+=gDeltaTime}
 //Let the character continue to jump
 if kJump=0 and kDashLeft=0 and kDashRight=0 {jumpButtonReleased=1}
 if jumpButtonReleased {jumpTime=jumpTimeTotal}
@@ -751,7 +754,7 @@ if bTakingDamage=false
         y+=1
         idleTime=0
         state=FALLING
-        yAcc+=grav//*gDeltaTime
+        yAcc+=grav
       }
       else
       {
@@ -936,14 +939,14 @@ else if flySpeed<0 {flySpeed=0}
 //Exterior forces on the player
 if extForceX!=0
 {
-  xVel+=extForceX//*gDeltaTime
+  xVel+=extForceX
   if extForceX>0 {extForceX-=0.2*gDeltaTime}
   else if extForceX<0 {extForceX+=0.2*gDeltaTime}
   if abs(extForceX)<0.4 {extForceX=0}
 }
 if extForceY!=0
 {
-  yVel+=extForceY//*gDeltaTime
+  yVel+=extForceY
   if extForceY>0 {extForceY-=0.2*gDeltaTime}
   else if extForceY<0 {extForceY+=0.2*gDeltaTime}
   if abs(extForceY)<0.4 {extForceY=0}
@@ -1118,6 +1121,19 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
   if yAcc>yAccLimit {yAcc=yAccLimit}
   else if yAcc<-1*yAccLimit {yAcc=-1*yAccLimit}
 
+  if (false)
+  {
+      //applies the acceleration
+      xVel+=xAcc
+      yVel+=yAcc
+      //nullifies the acceleration
+      xAcc=0
+      yAcc=0
+      //applies the friction to the velocity, now that the velocity has been calculated
+      xVel*=xFric
+      yVel*=yFric
+  }
+
   //applies the acceleration
   var xAccapply, yAccapply;
   var xFricapply, yFricapply;
@@ -1145,11 +1161,23 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
   yAccapply *= 0.5
 
   xVel+=xAccapply
+  //xVel+=xAccapply // !
   yVel+=yAccapply
 
-  //nullifies the acceleration
+  // friction bodge so that microadjusting is easier
+  if xAccInputWalk == 0.0 && xFric > 0.2 && xFric < 0.8 && abs(xVel) < 3.0
+  {
+      var xVelSign;
+      xVelSign = sign(xVel)
+      xVel -= xVelSign * 2.0 * gDeltaTime * (1.0 - xFric)
+      if sign(xVel) != xVelSign
+        xVel = 0.0
+  }
+
+
   xAcc=0
   yAcc=0
+
   //apply the limits since the velocity may be too extreme
   if xVel>xVelLimit {xVel=xVelLimit}
   else if xVel<-1*xVelLimit {xVel=-1*xVelLimit}
@@ -1182,15 +1210,14 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
     xPrev=x
     yPrev=slopeYPrev      //we don't want to use y, because y is too high
     yPrevHigh=y          //we'll use the higher previous variable later
-    moveTo(xVel*gDeltaTime,yVel*gDeltaTime+slopeChangeInY)
-    //pMoveTo(xVel*gDeltaTime,yVel*gDeltaTime+slopeChangeInY)
+    pMoveTo(xVel*gDeltaTime,yVel*gDeltaTime+slopeChangeInY)
     dist=point_distance(xPrev,yPrev,x,y) //overall distance that has been traveled
     //we should have only ran at xVel
     if dist>abs(xVelInteger)
     {
       //show_message(string(dist)+ " "+string(abs(xVelInteger)))
       excess=dist-abs(xVelInteger)
-      if xVelInteger<0 {excess*=-1}
+      if xVelapply<0 {excess*=-1}
       //move back since the character moved too far
       x=xPrev
       y=yPrevHigh  //we need the character to be high so the character can move down
@@ -1198,20 +1225,18 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
       //these lines can be changed for different types of slowing down when running up hills
       //ratio=abs(xVelInteger)/dist*0.9        //can be changed, init: 0.9
       ratio=1.075
-      moveTo(round(xVelInteger*ratio),round(yVelInteger*ratio+slopeChangeInY))
-      //pMoveTo(round(xVelInteger*ratio),round(yVelInteger*ratio+slopeChangeInY))
-      //pMoveTo((xVelInteger*ratio),(yVelInteger*ratio+slopeChangeInY))
+      pMoveTo((xVel*gDeltaTime*ratio),(yVel*gDeltaTime*ratio+slopeChangeInY))
     }
   }
   else
   {
     //we simply move xVel and yVel while in the air or on a ladder
-    //pMoveTo(xVel*gDeltaTime,yVel*gDeltaTime)
-    moveTo(xVel*gDeltaTime,yVel*gDeltaTime)
+    pMoveTo(xVel*gDeltaTime,yVel*gDeltaTime)
   }
   
   xVel+=xAccapply
   yVel+=yAccapply
+  
   //apply the limits since the velocity may be too extreme
   if xVel>xVelLimit {xVel=xVelLimit}
   else if xVel<-1*xVelLimit {xVel=-1*xVelLimit}
@@ -1222,7 +1247,6 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
   if approximatelyZero(yVel) {yVel=0}
   if approximatelyZero(xAcc) {xAcc=0}
   if approximatelyZero(yAcc) {yAcc=0}
-  
   
   //move the character downhill if possible
   //we need to multiply maxDownSlope by the absolute value of xVel since the character normally runs at an xVel larger than 1
@@ -1440,7 +1464,7 @@ if chargeSoundCheck=1 //Stop charging sound if all charging buttons are released
 //---------- Flash time after taking damage ----------
 if bCanTakeHit=false
 {
-  damageTime-=1
+  damageTime-=gDeltaTime
   if sprite_index!=sJerryDamaged or sprite_index!=sClaireDamaged
   {
     if image_alpha=0.75 {image_alpha=0.25}
@@ -1713,8 +1737,6 @@ if attackState=ACT_IN_BIKE //Dirt effect on the ground when on bike
   image_speed=0
 }
 
-image_speed *= gDeltaTime
-
 //figures out which direction the sprite should be facing
 if facing=LEFT {image_xscale=-1}
 else if facing=RIGHT {image_xscale=1}
@@ -1724,6 +1746,8 @@ statePrevPrev=statePrev
 statePrev=state
 attackStatePrevPrev=attackStatePrev
 attackStatePrev=attackState
+
+//image_speed *= gDeltaTime
 
 //limit the image_speed to 1 so the animation always looks good
 if image_speed>1 {image_speed=1}

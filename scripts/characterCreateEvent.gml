@@ -102,41 +102,41 @@ player=1                   //player number (player 2 uses different keyboard key
 state=FALLING              //the character state, must be one of the following: STANDING, RUNNING, DUCKING, LOOKING_UP, CLIMBING, JUMPING, or FALLING
 facing=RIGHT               //which direction the character is facing, must be either LEFT or RIGHT
 if global.activeCharacter=0  //the running acceleration
-  runAcc=6.6//FPS_SCA  //QWH; added the /2s
+  runAcc=6.6
 else if global.activeCharacter=1
-  runAcc=7.3//FPS_SCA
+  runAcc=7.3
 else if global.activeCharacter=2
-  runAcc=4.5//FPS_SCA
+  runAcc=4.5
 else if global.activeCharacter=4
-  runAcc=7.7//FPS_SCA
+  runAcc=7.7
 else
-  runAcc=6.6//FPS_SCA
-grav=0.6//FPS_SCA/FPS_SCA          //the gravity. might be 1.2 or 0.6
+  runAcc=6.6
+grav=1.2                   //the gravity
 if global.activeCharacter=0 or global.activeCharacter=1
 {
-  initialJumpAcc=-7.1//FPS_SCA         //relates to how high the character will jump
-  jumpTimeTotal=21        //how long the user must hold the jump button to get the maximum jump height
+  initialJumpAcc=-7.1      //relates to how high the character will jump
+  jumpTimeTotal=21         //how long the user must hold the jump button to get the maximum jump height
 }
 else if global.activeCharacter=2
 {
-  initialJumpAcc=-7//FPS_SCA          //relates to how high the character will jump
-  jumpTimeTotal=60  //*FPS_SCA        //how long the user must hold the jump button to get the maximum jump height
+  initialJumpAcc=-7        //relates to how high the character will jump
+  jumpTimeTotal=60         //how long the user must hold the jump button to get the maximum jump height
 }
 else if global.activeCharacter=4
 {
   mask_index=sJF_HitBox
-  initialJumpAcc=-7.6//FPS_SCA
-  jumpTimeTotal=22//*FPS_SCA
+  initialJumpAcc=-7.6
+  jumpTimeTotal=22
 }
 else
 {
-  initialJumpAcc=-7.1//FPS_SCA
-  jumpTimeTotal=21//*FPS_SCA
+  initialJumpAcc=-7.1
+  jumpTimeTotal=21
 }
 doubleJumpAcc=-6.1         //relates to how high the character will jump from a double jump
 climbAcc=0.8               //how fast the character will climb
-runAnimSpeed=0.045//FPS_SCA         //relates to how fast the running animation should go QWH
-climbAnimSpeed=0.1//FPS_SCA         //relates to how fast the climbing animation should go
+runAnimSpeed=0.045         //relates to how fast the running animation should go
+climbAnimSpeed=0.1         //relates to how fast the climbing animation should go
 departLadderXVel=4         //how fast character should be moving horizontally when he leaves the ladder
 departLadderYVel=-4        //how fast the character should be moving vertically when he leaves the ladder
 maxSlope=4                 //approximately how many pixels the character can climb UPWARDS per step (a value of 5 means the character can climb up a slope of 5)
@@ -146,7 +146,7 @@ canFly=0                   //whether the character can do a fly jump when runnin
 canFlyJump=0               //whether the character can do continuous fly jumps (mid-air)
 flyMaxJumps=5              //the maximum number of jumps the character can perform while flying
 frictionAirX=0.82          //friction obtained while in the air while no keys are pressed
-frictionRunningX=0.5      //friction obtained while running
+frictionRunningX=0.5       //friction obtained while running
 frictionRunningFastX=0.98  //friction obtained while holding the shift button for some time while running
 frictionClimbingX=0.5      //friction obtained while climbing
 frictionClimbingY=0.8      //friction obtained while climbing
@@ -168,9 +168,9 @@ yVelLimit=12               //limits the yVel
 xAccLimit=10               //limits the xAcc
 yAccLimit=10               //limits the yAcc
 dashVel=14                 //the initial dash velocity
-dashInvulnerability=(9+global.skillTree[23])/FPS_SCA   //how long the character is invulnerable after dashing
-idleAnimSpeed=0.1/FPS_SCA          //relates to how fast the idle animations should be
-dashRecovery=(24+(global.skillTree[22]*2))/FPS_SCA   //how much dash energy is recovered per frame
+dashInvulnerability=9+global.skillTree[23]  //how long the character is invulnerable after dashing
+idleAnimSpeed=0.1          //relates to how fast the idle animations should be
+dashRecovery=24+(global.skillTree[22]*2)  //how much dash energy is recovered per frame
 
 if global.activeCharacter=0
 {
@@ -253,7 +253,7 @@ extForceY=0                //external force applied to yVel
 
 //Variables pertaining to attacking (don't edit)
 global.hudLink_BombEn[0]=150 //resets Jerry's bomb time
-recoverTime=(17+global.skillTree[24])/FPS_SCA //time till character recovers from damage (unflinch)
+recoverTime=17+global.skillTree[24] //time till character recovers from damage (unflinch)
 global.hudSamus_Bombs[0]=0 //resets Samus' bombs
 castRecovering=0           //current time till character recovers
 hitCombo=0                 //current hits in combo

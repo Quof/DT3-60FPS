@@ -16,12 +16,10 @@ more precise calculations inside of the engine.
 */
 mtXPrev=x
 mtYPrev=y
-
-// bodged version for the player (no rounding)
-
-xVelInteger=argument0
-yVelInteger=argument1
-
+//change the decimal arguments to integer variables with relation to time
+xVelInteger=sign(argument0) * floor(abs(argument0) + frac(ditherCounter * 0.618))
+yVelInteger=sign(argument1) * floor(abs(argument1) + frac(ditherCounter * 0.618))
+//yVelInteger=argument1
 //object is moving to the right
 if xVelInteger>0
   for(x=x;x<mtXPrev+xVelInteger;x+=1)
