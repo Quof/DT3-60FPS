@@ -10,36 +10,31 @@ Note: First the script moves the object in the x direction, then in
 the y direction.
 Once the function is finished, one can use the xVelInteger and yVelInteger variables for
 more precise calculations inside of the engine.
+
 0: x distance to move
 1: y distance to move
-
-Subpixel handling: fractional distances are accumulated per-instance in
-mtXRemainder/mtYRemainder and only committed to whole pixels once the running
-total crosses an integer boundary. This replaces the old oGame.time-based
-dithering, which only averaged correctly when a speed's fractional part was
-an exact unit fraction (1/2, 1/3, 1/4...) — any other fractional speed (0.6,
-0.7, 0.3, etc.) was silently rounded to the nearest achievable unit fraction
-instead of its true value. The accumulator below is exact for any speed and
-any room_speed, so it never needs revisiting if the frame rate changes again.
 */
 mtXPrev=x
 mtYPrev=y
-
-//lazily initialize this instance's persistent subpixel remainder the first time it calls moveTo
-if variable_local_exists("mtXRemainder")=0
-  mtXRemainder=0
-if variable_local_exists("mtYRemainder")=0
-  mtYRemainder=0
-
-//accumulate this call's exact requested distance, then commit only the whole-pixel part
-mtXRemainder+=argument0
-xVelInteger=round(mtXRemainder)
-mtXRemainder-=xVelInteger
-
-mtYRemainder+=argument1
-yVelInteger=round(mtYRemainder)
-mtYRemainder-=yVelInteger
-
+//change the decimal arguments to integer variables with relation to time
+xVelFrac=frac(abs(argument0))
+yVelFrac=frac(abs(argument1))
+xVelInteger=0
+yVelInteger=0
+if xVelFrac!=0
+  if round(1/xVelFrac)!=0
+    xVelInteger=(oGame.time mod round(1/xVelFrac)=0)
+if yVelFrac!=0
+  if round(1/yVelFrac)!=0
+    yVelInteger=(oGame.time mod round(1/yVelFrac)=0)
+xVelInteger+=floor(abs(argument0))
+yVelInteger+=floor(abs(argument1))
+if argument0<0
+  xVelInteger*=-1
+if argument1<0
+  yVelInteger*=-1
+xVelInteger=round(xVelInteger)
+yVelInteger=round(yVelInteger)
 //object is moving to the right
 if xVelInteger>0
   for(x=x;x<mtXPrev+xVelInteger;x+=1)
@@ -65,7 +60,7 @@ if xVelInteger>0
       }
       else
         break
-    }    
+    }
   }
 //object is moving to the left
 if xVelInteger<0
@@ -92,8 +87,8 @@ if xVelInteger<0
       }
       else
         break
-    } 
-  }  
+    }
+  }
 //object is moving down
 if yVelInteger>0
   for(y=y;y<mtYPrev+yVelInteger;y+=1)

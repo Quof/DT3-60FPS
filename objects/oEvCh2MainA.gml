@@ -306,7 +306,7 @@ else if global.gameProgress=160 and room=rMario1_1 //----- [2] (Unskippable unti
   {
     sceneDelay+=1/FPS_SCA
     if sceneDelay=1 {fadeColor=c_black}
-    else if sceneDelay>=2 and sceneDelay<=21 {fadeAlpha+=0.05FPS_SCA}
+    else if sceneDelay>=2 and sceneDelay<=21 {fadeAlpha+=0.05/FPS_SCA}
     else if sceneDelay>=30 {sceneDelay=0; sceneProgress+=1}
   }
   else if sceneProgress=19 and bWaitForInput=false
