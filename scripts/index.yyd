@@ -189,3 +189,6 @@ scrFullStatRestore
 pMoveTo
 isCollisionLeftEdit
 isCollisionRightEdit
+scrGlobalKeyboardInit
+scrGlobalKeyboardShutdown
+scrKeyboardCheck
