@@ -20,7 +20,7 @@ if tailState=0
 {
   if tailwag<=0
   {
-    image_speed=0.33/FPS_SCA
+    image_speed=0.33
     tailState=1
     tailwag=10+irandom(40)
   }

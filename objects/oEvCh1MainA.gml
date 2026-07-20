@@ -41,7 +41,7 @@ if global.gameProgress=0 and room=rMain_1 //----- [1] Jerry dropping down -----
       playSound(global.snd_Teleport,0,1,1)
       var tEffect;
       tEffect=instance_create(oPlayer1.x,oPlayer1.y-26,oEffect)
-      tEffect.sprite_index=sHeal; tEffect.image_speed=0.5/FPS_SCA
+      tEffect.sprite_index=sHeal; tEffect.image_speed=0.5
       tEffect.image_xscale=3; tEffect.image_yscale=3
       tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=0; tEffect.ySpd=0
     }
@@ -50,7 +50,7 @@ if global.gameProgress=0 and room=rMain_1 //----- [1] Jerry dropping down -----
       playSound(global.snd_BombExplode,0,0.92,1)
       var tEffect;
       tEffect=instance_create(oPlayer1.x,oPlayer1.y-26,oEffect)
-      tEffect.sprite_index=sShipExplosion; tEffect.image_speed=0.5/FPS_SCA
+      tEffect.sprite_index=sShipExplosion; tEffect.image_speed=0.5
       tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=0; tEffect.ySpd=0
     }
     else if sceneDelay=60

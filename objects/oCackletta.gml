@@ -5,7 +5,7 @@ action_id=603
 applies_to=self
 */
 event_inherited()
-image_speed=0.2/FPS_SCA
+image_speed=0.2
 bCanTakeDamage=false
 
 //Enemy base statistics
@@ -497,12 +497,12 @@ if global.gamePaused=false
           tEffect=instance_create(344,280+(i*12),oEffect)
           tEffect.sprite_index=sMMSmokeCloud
           tEffect.image_speed=0.15+random(0.15); tEffect.image_xscale=1.5; tEffect.image_yscale=1.5
-          tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100/FPS_SCA; tEffect.xSpd=0; tEffect.ySpd=0
+          tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=0; tEffect.ySpd=0
 
           tEffect=instance_create(584,280+(i*12),oEffect)
           tEffect.sprite_index=sMMSmokeCloud
           tEffect.image_speed=0.15+random(0.15); tEffect.image_xscale=1.5; tEffect.image_yscale=1.5
-          tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100/FPS_SCA; tEffect.xSpd=0; tEffect.ySpd=0
+          tEffect.newBlend=-1; tEffect.followID=-1; tEffect.decay=-100; tEffect.xSpd=0; tEffect.ySpd=0
         }
         oSlavePlatform.yVel=1/FPS_SCA
         floorSeq=2

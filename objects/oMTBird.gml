@@ -4,9 +4,9 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-image_speed=(0.15+random(0.1))/FPS_SCA
+image_speed=(0.15+random(0.1))
 image_xscale=choose(-1,1)
-moveSpd=0.25+random(0.75)
+moveSpd=(0.25+random(0.75))/FPS_SCA
 dirChange=irandom(300)
 type=0
 bSpotted=0
@@ -17,20 +17,20 @@ action_id=603
 applies_to=self
 */
 if image_xscale=1
-  x+=moveSpd/FPS_SCA
+  x+=moveSpd
 else
-  x-=moveSpd/FPS_SCA
+  x-=moveSpd
 
 if type=0
 {
-  dirChange+=1
-  if dirChange>=480*FPS_SCA
+  dirChange+=1/FPS_SCA
+  if dirChange>=480
   {
     if image_xscale=1
       image_xscale=-1
     else
       image_xscale=1
-    dirChange=irandom(300*FPS_SCA)
+    dirChange=irandom(300)
   }
 }
 
