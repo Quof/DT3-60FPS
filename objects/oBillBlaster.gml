@@ -96,7 +96,7 @@ if global.gamePaused=false
           bBill.bActive=true
           bBill.bVert=bVert
           bBill.image_angle=90
-          if yOffset<0 {bBill.bulletSpeed=-7.5}
+          if yOffset<0 {bBill.bulletSpeed=-7.5/FPS_SCA}
           else
           {
             bBill.bulletSpeed=7.5/FPS_SCA

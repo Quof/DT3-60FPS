@@ -112,8 +112,8 @@ if global.gamePaused=false
   {
     deathAnim+=1
     if deathAnim=1 {sprite_index=sLakituFall}
-    y+=dthVelY
-    dthVelY+=0.3
+    y+=dthVelY/FPS_SCA
+    dthVelY+=0.3/FPS_SCA/FPS_SCA
     if y>room_height+16 {instance_destroy()}
   }
   enemyStepEvent()

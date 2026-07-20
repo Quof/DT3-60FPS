@@ -20,6 +20,6 @@ applies_to=self
 */
 if global.gamePaused=false
 {
-  decay-=1
+  decay-=1/FPS_SCA
   if decay<=0 {instance_destroy()}
 }

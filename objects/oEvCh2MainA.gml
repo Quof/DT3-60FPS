@@ -604,8 +604,8 @@ else if global.gameProgress=250 and room=rMario1_4Story //----- [4] Cackletta ta
     }
     else if sceneDelay>=10 and sceneDelay<=17
     {
-      charJerry.x-=1
-      charJerry.y-=7
+      charJerry.x-=1/FPS_SCA
+      charJerry.y-=7/FPS_SCA
     }
     else if sceneDelay=18
     {

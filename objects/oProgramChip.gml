@@ -20,8 +20,8 @@ for (i=0;i<3;i+=1)
 {
   if effectSize[i]<1.75
   {
-    effectSize[i]+=0.01
-    effectAlpha[i]-=0.01
+    effectSize[i]+=0.01/FPS_SCA
+    effectAlpha[i]-=0.01/FPS_SCA
   }
   else
   {

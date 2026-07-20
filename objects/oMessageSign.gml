@@ -20,9 +20,9 @@ if fadingTime>0
 
   if x<0 {x=0}
   else if x+tBoxOffsetX>room_width {x=room_width-tBoxOffsetX}
-  fadingTime-=1
+  fadingTime-=1/FPS_SCA
   if fadingTime<=20
-    image_alpha-=0.05
+    image_alpha-=0.05/FPS_SCA
 }
 else
   instance_destroy()

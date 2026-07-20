@@ -35,10 +35,10 @@ applies_to=self
 */
 if animPlayerExit>0 //Going down pipe
 {
-  animPlayerExit+=1
+  animPlayerExit+=1/FPS_SCA
   oPlayer1.bCanTakeDamage=true
   oPlayer1.x=x+(sprite_width/2)
-  oPlayer1.y+=2
+  oPlayer1.y+=2/FPS_SCA
   if animPlayerExit=30
   {
     global.gamePaused=false
@@ -59,7 +59,8 @@ if animPlayerExit>0 //Going down pipe
 
 if sprite_index=sPillarOfLight
 {
-  if oGame.time mod 2=0
+  //if oGame.time mod 2=0 (removed by Quof)
+  if current_frame mod 2*FPS_SCA == 0
   {
     if image_alpha=0.75 {image_alpha=0.5}
     else {image_alpha=0.75}
