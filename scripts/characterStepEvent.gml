@@ -1217,7 +1217,7 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
     {
       //show_message(string(dist)+ " "+string(abs(xVelInteger)))
       excess=dist-abs(xVelInteger)
-      if xVelapply<0 {excess*=-1}
+      if xVelInteger<0 {excess*=-1}
       //move back since the character moved too far
       x=xPrev
       y=yPrevHigh  //we need the character to be high so the character can move down

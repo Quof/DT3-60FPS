@@ -8,6 +8,7 @@ setCollisionBounds(0,0,sprite_width,sprite_height)
 image_speed=0.15
 hitTime=0
 bTellMeToExplode=0
+moveGroup=0 //QWH, hacking this in for bowser boss fight
 #define Step_0
 /*"/*'/**//* YYD ACTION
 lib_id=1

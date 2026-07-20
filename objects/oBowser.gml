@@ -247,19 +247,22 @@ if global.gamePaused=false
       bottomBlocks+=1/FPS_SCA
       if bottomBlocks>=1 and bottomBlocks<=16 //Move bottom blocks down
       {
-        var tInsCheck;
+       /* var tInsCheck;
         tInsCheck=455498
         for(i=0;i<8;i+=1) //455498 - 455505
         {
           (455498+i).y+=1/FPS_SCA
-        }
+        }*/
+          with (oMarioBreakBlock)
+            if /*current_frame mod 2 == 0 and*/ moveGroup==1
+                {y+=1}
       }
       if bottomBlocks=20
       {
-        (122344).bTellMeToExplode=1
+        /*(122344).bTellMeToExplode=1
         (122345).bTellMeToExplode=1
         (122358).bTellMeToExplode=1
-        (122359).bTellMeToExplode=1
+        (122359).bTellMeToExplode=1*/ //QWH, TEST
         instance_create(608,288,oBowSwitch)
         instance_create(832,288,oBowSwitch)
         bottomBlocks=100
@@ -285,12 +288,15 @@ if global.gamePaused=false
       bottomBlocks+=1/FPS_SCA
       if bottomBlocks>=281 and bottomBlocks<=296 //Move bottom blocks up
       {
-        var tInsCheck;
+       /* var tInsCheck;
         tInsCheck=455498
         for(i=0;i<8;i+=1) //455498 - 455505
         {
           (455498+i).y-=1/FPS_SCA
-        }
+        } */
+
+        with (oBowBottomBlock)
+            y+=1/FPS_SCA
       }
       else if bottomBlocks=300
       {
