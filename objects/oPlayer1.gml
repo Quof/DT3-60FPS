@@ -659,8 +659,8 @@ if global.gamePaused=false and global.bShooter=0
   }
   
   //---------- Level time (per map) ----------
-  global.levelTimeFrameCount+=1
-  if global.levelTimeFrameCount>=30*FPS_SCA
+  global.levelTimeFrameCount+=1/FPS_SCA
+  if global.levelTimeFrameCount>=30
   {
     global.levelTimeSecond+=1
     global.levelTimeFrameCount=0

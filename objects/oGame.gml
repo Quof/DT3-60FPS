@@ -37,7 +37,7 @@ if windowUpdate mod 30=0
 }
 
 //play time
-if global.playTimeFrameCount>=30*FPS_SCA
+if global.playTimeFrameCount>=30
 {
   global.playTimeFrameCount=0
   global.playTimeSecond+=1
@@ -62,7 +62,7 @@ if global.playTimeFrameCount>=30*FPS_SCA
     createScreenText(514,336,-1,fnt_Swap,fa_left,"Go to sleep, Quof! You have been playing for 24 hours! It's time to sleep... ... ... GO TO SLEEP!",3,c_white,1,1)
   }
 }
-else {global.playTimeFrameCount+=1}
+else {global.playTimeFrameCount+=1/FPS_SCA}
 
 //close the game
 if global.bCanUseEsc=1
