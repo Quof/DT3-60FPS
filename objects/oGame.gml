@@ -38,6 +38,20 @@ if windowUpdate mod 30=0
 //60fps in the title screen and overworld...
 room_speed=global.gameFrameRate
 
+gDeltaDoTicks = 0
+gDeltaTick += gDeltaTime
+while (gDeltaTick >= 1.0)
+{
+    gDeltaDoTicks += 1
+    gDeltaTick -= 1.0
+}
+if gDeltaTime == 1.0 { gDeltaDoTicks = 1; gDeltaTick = 0.999999 }
+
+if global.gamePaused=false
+  gameStepEvent()
+
+
+
 //play time
 if global.playTimeFrameCount>=30
 {
@@ -78,14 +92,16 @@ if global.bCanUseEsc=1
 }
 
 //FPS changing
-/*if keyboard_check_pressed(vk_f2)
+if keyboard_check_pressed(vk_f2)
 {
   if global.FPS_SCA==1 {global.FPS_SCA=4 }
   else if global.FPS_SCA==4 {global.FPS_SCA=1}
   global.gameFrameRate=30*FPS_SCA
   room_speed=global.gameFrameRate
   global.gDeltaTime = 1/FPS_SCA
-}*/
+  gDeltaDoTicks = 0
+  gDeltaTick = 0.0
+}
 
 
 //windowed mode scale change 1x/2x/3x

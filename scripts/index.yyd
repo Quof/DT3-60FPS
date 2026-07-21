@@ -192,3 +192,5 @@ isCollisionRightEdit
 scrGlobalKeyboardInit
 scrGlobalKeyboardShutdown
 scrKeyboardCheck
+fptoif
+moveTo30

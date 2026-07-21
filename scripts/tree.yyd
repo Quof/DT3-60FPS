@@ -51,6 +51,7 @@
 	|scrSwapEffect
 	|scrFullStatRestore
 	|pMoveTo
+	|moveTo30
 +Enemy
 	|charEnemyCreateEvent
 	|enemyQuest
@@ -70,6 +71,7 @@
 	|aiCheckVert
 	|aiCheckSpecial
 	|enemySlopeMovement
+	|fptoif
 +Game
 	|loadExtFiles
 	|gameCreateEvent
