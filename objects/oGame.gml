@@ -15,9 +15,6 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-if global.gamePaused=false
-  gameStepEvent()
-
 with (all)
 {
     image_index -= image_speed
@@ -84,8 +81,15 @@ if global.bCanUseEsc=1
   else if global.FPS_SCA==4 {global.FPS_SCA=1}
   global.gameFrameRate=30*FPS_SCA
   room_speed=global.gameFrameRate
+<<<<<<< Updated upstream
   global.gDeltaTime = 1/FPS_SCA
 }*/
+=======
+  gDeltaTime = 1/FPS_SCA
+  gDeltaDoTicks = 0
+  gDeltaTick = 0.0
+}
+>>>>>>> Stashed changes
 
 
 //windowed mode scale change 1x/2x/3x

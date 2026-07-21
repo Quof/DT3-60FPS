@@ -361,7 +361,6 @@ if state=CLIMBING and bTakingDamage=false
   if kDown {yAcc+=climbAcc}
 }
 
-var xAccInputWalk;
 xAccInputWalk = xAcc
 
 if platformCharacterIs(IN_AIR)
@@ -1115,139 +1114,11 @@ if grappleState=0 or grappleState=1 //Slow falling speed if facing wall when tou
     }
   }
 
-  //Limits the acceleration if it is too extreme
-  if xAcc>xAccLimit {xAcc=xAccLimit}
-  else if xAcc<-1*xAccLimit {xAcc=-1*xAccLimit}
-  if yAcc>yAccLimit {yAcc=yAccLimit}
-  else if yAcc<-1*yAccLimit {yAcc=-1*yAccLimit}
-
-  if (false)
-  {
-      //applies the acceleration
-      xVel+=xAcc
-      yVel+=yAcc
-      //nullifies the acceleration
-      xAcc=0
-      yAcc=0
-      //applies the friction to the velocity, now that the velocity has been calculated
-      xVel*=xFric
-      yVel*=yFric
-  }
-
-  //applies the acceleration
-  var xAccapply, yAccapply;
-  var xFricapply, yFricapply;
-  xFricapply = xFric
-  yFricapply = yFric
-  if (xFric > 0.0 and xFric < 1.0)
-  {
-      xFricapply = exp(ln(xFric + 0.000001)*gDeltaTime)
-      xAccapply = xAcc * xFric * (xFricapply - 1.0) / (xFric - 1.0 - 0.000001)
-  }
-  else if (xFric == 1.0)
-      xAccapply = xAcc * gDeltaTime
-  if (yFric > 0.0 and yFric < 1.0)
-  {
-      yFricapply = exp(ln(yFric + 0.000001)*gDeltaTime)
-      yAccapply = yAcc * yFric * (yFricapply - 1.0) / (yFric - 1.0 - 0.000001)
-  }
-  else if (yFric == 1.0)
-      yAccapply = yAcc * gDeltaTime
-
-  xAccapply-=xVel * (1.0 - xFricapply)
-  yAccapply-=yVel * (1.0 - yFricapply)
-
-  xAccapply *= 0.5
-  yAccapply *= 0.5
-
-  xVel+=xAccapply
-  //xVel+=xAccapply // !
-  yVel+=yAccapply
-
-  // friction bodge so that microadjusting is easier
-  if xAccInputWalk == 0.0 && xFric > 0.2 && xFric < 0.8 && abs(xVel) < 3.0
-  {
-      var xVelSign;
-      xVelSign = sign(xVel)
-      xVel -= xVelSign * 2.0 * gDeltaTime * (1.0 - xFric)
-      if sign(xVel) != xVelSign
-        xVel = 0.0
-  }
-
-
-  xAcc=0
-  yAcc=0
-
-  //apply the limits since the velocity may be too extreme
-  if xVel>xVelLimit {xVel=xVelLimit}
-  else if xVel<-1*xVelLimit {xVel=-1*xVelLimit}
-  if yVel>yVelLimit {yVel=yVelLimit}
-  else if yVel<-16 {yVel=-16}
-  //approximates the "active" variables
-  if approximatelyZero(xVel) {xVel=0}
-  if approximatelyZero(yVel) {yVel=0}
-  if approximatelyZero(xAcc) {xAcc=0}
-  if approximatelyZero(yAcc) {yAcc=0}
-
-  //prepares the character to move up a hill
-  //we need to use the "slopeYPrev" variable later to know the "true" y previous value
-  //keep this condition the same
-  if maxSlope>0 and platformCharacterIs(ON_GROUND) and xVel!=0
-  {
-    slopeYPrev=y
-    for(y=y;y>=slopeYPrev-maxSlope;y-=1)
-      if isCollisionTop(1)
-        break
-    slopeChangeInY=slopeYPrev-y
-  }
-  else {slopeChangeInY=0}
-
-  //moves the character, and balances out the effects caused by other processes
-  //keep this condition the same
-  if maxSlope*abs(xVel)>0 and platformCharacterIs(ON_GROUND)
-  {
-    //we need to check if we should dampen out the speed as the character runs on upward slopes
-    xPrev=x
-    yPrev=slopeYPrev      //we don't want to use y, because y is too high
-    yPrevHigh=y          //we'll use the higher previous variable later
-    pMoveTo(xVel*gDeltaTime,yVel*gDeltaTime+slopeChangeInY)
-    dist=point_distance(xPrev,yPrev,x,y) //overall distance that has been traveled
-    //we should have only ran at xVel
-    if dist>abs(xVelInteger)
-    {
-      //show_message(string(dist)+ " "+string(abs(xVelInteger)))
-      excess=dist-abs(xVelInteger)
-      if xVelInteger<0 {excess*=-1}
-      //move back since the character moved too far
-      x=xPrev
-      y=yPrevHigh  //we need the character to be high so the character can move down
-      //this time we'll move the correct distance, but we need to shorten out the xVel a little
-      //these lines can be changed for different types of slowing down when running up hills
-      //ratio=abs(xVelInteger)/dist*0.9        //can be changed, init: 0.9
-      ratio=1.075
-      pMoveTo((xVel*gDeltaTime*ratio),(yVel*gDeltaTime*ratio+slopeChangeInY))
-    }
-  }
+  if (gDeltaTime==1)
+    pMoveToWrapOrig()
   else
-  {
-    //we simply move xVel and yVel while in the air or on a ladder
-    pMoveTo(xVel*gDeltaTime,yVel*gDeltaTime)
-  }
-  
-  xVel+=xAccapply
-  yVel+=yAccapply
-  
-  //apply the limits since the velocity may be too extreme
-  if xVel>xVelLimit {xVel=xVelLimit}
-  else if xVel<-1*xVelLimit {xVel=-1*xVelLimit}
-  if yVel>yVelLimit {yVel=yVelLimit}
-  else if yVel<-16 {yVel=-16}
-  //approximates the "active" variables
-  if approximatelyZero(xVel) {xVel=0}
-  if approximatelyZero(yVel) {yVel=0}
-  if approximatelyZero(xAcc) {xAcc=0}
-  if approximatelyZero(yAcc) {yAcc=0}
-  
+    pMoveToWrapNew()
+
   //move the character downhill if possible
   //we need to multiply maxDownSlope by the absolute value of xVel since the character normally runs at an xVel larger than 1
   if isCollisionBottom(1)=0 and maxDownSlope>0 and xVelInteger!=0 and platformCharacterIs(ON_GROUND)
@@ -1272,7 +1143,7 @@ else if grappleState=2 //Player is being pulled toward grapple point
     tGrpX=7*image_xscale
     tGrpDir=point_direction(x+tGrpX,0,grappleID.x,0)
     x+=12*cos(degtorad(tGrpDir))
-
+    
     tGrpDist=point_distance(x+tGrpX,0,grappleID.x,0)
     if tGrpDist<=7
     {
@@ -1432,7 +1303,7 @@ if attackState!=ACT_MORPHBALL and attackState!=ACT_IN_BIKE and attackState!=ACT_
         }
       }
     }
-
+    
     if kCharSwap and kCharSwapPressed=1 and bTakingDamage=false //Defender
     {
       if global.bTowerDefense>0
@@ -1531,7 +1402,7 @@ if global.activeCharacter=0 //-------------------- JERRY --------------------
       else {sprite_index=sJerryAirDash}
     }
     else if flySpeed>90 and jumps>0 and jumps<flyMaxJumps and platformCharacterIs(IN_AIR) {sprite_index=sJerryJumpForward}
-
+    
     if doubleJumpAnim>0 and yVel<4 {sprite_index=sJerryJumpForward}
     if groundDashRecovery>0 {sprite_index=sJerryAirDash}
     else if backDashRecovery>0 {sprite_index=sJerryJumpBack}
@@ -1547,7 +1418,7 @@ if global.activeCharacter=0 //-------------------- JERRY --------------------
     else if state=RUNNING {mmState=BUSTER_RUN}
     else if (state=JUMPING or state=FALLING) {mmState=BUSTER_JUMP}
   }
-
+  
   if bTakingDamage=false
   {
     if attackState=ACT_ATK {sprite_index=sJerrySword}
@@ -1618,7 +1489,7 @@ else if global.activeCharacter=1 //-------------------- CLAIRE -----------------
       else {sprite_index=sClaireAirDash}
     }
     else if flySpeed>90 and jumps>0 and jumps<flyMaxJumps and platformCharacterIs(IN_AIR) {sprite_index=sClaireJumpForward}
-
+    
     if doubleJumpAnim>0 and yVel<4 {sprite_index=sClaireAirRoll}
   }
   if busterAnimStay>0 {busterAnimStay-=1}
@@ -1677,7 +1548,7 @@ else if global.activeCharacter=2 //-------------------- JEREMY - MECH ----------
     }
   }
   else {footStepSound=0}
-
+  
   if attackState=0 and bTakingDamage=false
   {
     if state=STANDING or state=LOOKING_UP or state=DUCKING or state=CLIMBING
@@ -1687,7 +1558,7 @@ else if global.activeCharacter=2 //-------------------- JEREMY - MECH ----------
     }
     else if state=RUNNING {sprite_index=sJeremyMechWalk}
     else if state=JUMPING or state=FALLING and statePrev=FALLING {sprite_index=sJeremyMechJump}
-
+    
     if state=JUMPING or bUseFuel=1
     {
       var tEffect,tRanScl,tFuelCol;

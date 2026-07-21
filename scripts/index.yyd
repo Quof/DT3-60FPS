@@ -192,3 +192,11 @@ isCollisionRightEdit
 scrGlobalKeyboardInit
 scrGlobalKeyboardShutdown
 scrKeyboardCheck
+<<<<<<< Updated upstream
+=======
+fptoif
+moveTo30
+pMoveToWrapOrig
+pMoveToWrapNew
+pCheckLandBelow
+>>>>>>> Stashed changes

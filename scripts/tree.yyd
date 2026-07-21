@@ -51,6 +51,13 @@
 	|scrSwapEffect
 	|scrFullStatRestore
 	|pMoveTo
+<<<<<<< Updated upstream
+=======
+	|moveTo30
+	|pMoveToWrapOrig
+	|pMoveToWrapNew
+	|pCheckLandBelow
+>>>>>>> Stashed changes
 +Enemy
 	|charEnemyCreateEvent
 	|enemyQuest
