@@ -84,7 +84,7 @@ if global.gamePaused=false
           }
           xDropSpot=oPlayer1.x
           xSpd=point_distance(x,0,xDropSpot,0)
-          xSpd/=12/FPS_SCA
+          xSpd/=(12*FPS_SCA)
           if xSpd<2/FPS_SCA {xSpd=2/FPS_SCA}
           else if xSpd>8/FPS_SCA {xSpd=8/FPS_SCA}
           sprite_index=sBowserStand; image_index=1
