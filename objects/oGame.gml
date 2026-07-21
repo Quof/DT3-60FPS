@@ -4,7 +4,7 @@ lib_id=1
 action_id=603
 applies_to=self
 */
-scrGlobalKeyboardInit(0)
+scrGlobalKeyboardInit(1)
 gameCreateEvent()
 bStatRender=false
 windowUpdate=0
@@ -37,7 +37,7 @@ if windowUpdate mod 30=0
 }
 
 //play time
-if global.playTimeFrameCount>=30
+if global.playTimeFrameCount>=30*FPS_SCA
 {
   global.playTimeFrameCount=0
   global.playTimeSecond+=1

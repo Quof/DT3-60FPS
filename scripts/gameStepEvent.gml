@@ -2,14 +2,6 @@
 -- The game's step event.
 */
 
-gDeltaDoTicks = 0
-gDeltaTick += gDeltaTime
-while (gDeltaTick >= 1.0)
-{
-    gDeltaDoTicks += 1
-    gDeltaTick -= 1.0
-}
-
 oGame.players[0] = noone     //players (used when "with( )" structures will not work)
 oGame.players_length = 0
 with oCharacter
@@ -21,13 +13,19 @@ with oCharacter
   oGame.players_length+=1
 }
 
-if gDeltaDoTicks == 0 { return 0; }
-
 //since we are not using GM's hspeed and vspeed variables, we need to add in decimal support ourselves (so 0.25 will only move 1 pixel every 4 steps, for example)
 oGame.time+=1
 //we don't want the time to grow too large
 if oGame.time>100000000
   oGame.time=0
+
+if gDeltaDoTicks == 0 { return 0; }
+
+//since we are not using GM's hspeed and vspeed variables, we need to add in decimal support ourselves (so 0.25 will only move 1 pixel every 4 steps, for example)
+oGame.time30+=1
+//we don't want the time to grow too large
+if oGame.time30>100000000
+  oGame.time30=0
 
 //moves all of the solids so that none of them collide with the character
 with oMovingSolid
@@ -54,10 +52,10 @@ with oMovingSolid
   yVelInteger=0
   if xVelFrac!=0
     if round(1/xVelFrac)!=0
-       xVelInteger=(oGame.time mod round(1/xVelFrac)=0)
+       xVelInteger=(oGame.time30 mod round(1/xVelFrac)=0)
   if yVelFrac!=0
     if round(1/yVelFrac)!=0
-      yVelInteger=(oGame.time mod round(1/yVelFrac)=0)
+      yVelInteger=(oGame.time30 mod round(1/yVelFrac)=0)
   xVelInteger+=floor(abs(xVel))
   yVelInteger+=floor(abs(yVel))
   if xVel<0
