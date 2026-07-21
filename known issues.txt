@@ -32,6 +32,11 @@ For some reason, it feels like title screen birds behave different from in-game 
 
 6) cursor moves WAY too fast when spending AP (this is probably in the menuSpendAP script)
 
+7) Bowser should jump higher
+
+8) Playtime counter is x2 as fast
+
+9) Spinning thing in pause menu is x2 as fast
 
 
 -----Random Notes, Possibly Not Even Issues
