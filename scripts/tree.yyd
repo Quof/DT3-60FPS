@@ -178,3 +178,7 @@
 	|scrTD_TowerStat
 +Display
 	|motion_blur
++Keyboard
+	|scrGlobalKeyboardInit
+	|scrGlobalKeyboardShutdown
+	|scrKeyboardCheck
