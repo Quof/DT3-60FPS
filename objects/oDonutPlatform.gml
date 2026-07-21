@@ -29,6 +29,7 @@ if global.gamePaused=false
     yAcc=grav
     yVel+=yAcc
     if yVel>6/FPS_SCA {yVel=6/FPS_SCA}
+    y+=yVel
     returnAfterPeriodOfTime-=1/FPS_SCA
     if returnAfterPeriodOfTime=0
     {

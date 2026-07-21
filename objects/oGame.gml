@@ -35,6 +35,8 @@ if windowUpdate mod 30=0
     window_set_size(window_get_width(),tCheckWidth)
   }
 }
+//60fps in the title screen and overworld...
+room_speed=global.gameFrameRate
 
 //play time
 if global.playTimeFrameCount>=30
